@@ -233,8 +233,8 @@ module.exports = function (passport) {
                         newUser.dob = (req.body.dob) ? req.body.dob : '';
                         newUser.company = (req.body.company) ? req.body.company : '';
                         newUser.address = (req.body.address) ? req.body.address : '';
-                        newUser.location[0] = req.body.location.lng;
-                        newUser.location[1] = req.body.location.lat;
+                        newUser.location[0] = req.body.location;
+                        newUser.location[1] = req.body.location;
                         newUser.type = (req.body.type) ? req.body.type : '';
                         newUser.country = (req.body.country) ? req.body.country : '';
                         console.log(newUser);
