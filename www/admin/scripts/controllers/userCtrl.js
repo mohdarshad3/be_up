@@ -50,7 +50,7 @@ angular.module('Admin').controller('userCtrl', function ($scope,$modal, $rootSco
         }
         if($scope.fromData.address.geometry != undefined) {
             $scope.fromData.location = $scope.fromData.address.geometry.location;
-           $scope.fromData.country = $scope.fromData.address.address_components[6]['short_name'];
+           $scope.fromData.country = $scope.fromData.address.address;
             $scope.fromData.address = $scope.fromData.address.formatted_address;
 
 
@@ -104,7 +104,7 @@ angular.module('Admin').controller('userCtrl', function ($scope,$modal, $rootSco
 
         if($scope.fromData.address.geometry != undefined) {
             $scope.fromData.location = $scope.fromData.address.geometry.location;
-            $scope.fromData.country = $scope.fromData.address.address_components[6]['short_name'];
+            $scope.fromData.country = $scope.fromData.address.address_components;
             $scope.fromData.address = $scope.fromData.address.formatted_address;
 
 
