@@ -1,0 +1,236 @@
+  <div class="content-wrapper" style="min-height: 426px;" ng-init="getUserList()">
+                    <!-- Content Header (Page header) -->
+<!-- Main content -->
+<section class="content">
+    <div class="row">
+        <div class="col-xs-12">
+            <div class="box">
+                <div class="box-body">
+                    <div class="box-header with-border ">
+                        <div class="col-sm-10">
+                        <h2 class="box-title"><strong>  User List</strong></h2>
+                        </div>
+                        <div class="col-sm-2">
+                            <a ui-sref="user-add" class="fa fa-plus btn btn-block btn-primary"> Add User</a>
+                        </div>
+                    </div>
+
+                    <div class="box-body " style="padding-left: 0px;padding-right: 0px;">
+
+    <div class="col-sm-10 ">
+        
+    </div>
+    <div class="col-sm-2 ">
+
+                       
+    </div>
+    
+             
+
+</div>
+
+
+
+
+                    <!-- /.box-header -->
+                    <form method="post" accept-charset="utf-8" id="PageViewForm" action="/projects/cakeadmin/appunisonadmin/categoryListing"><div style="display:none;"><input name="_method" value="POST" type="hidden"></div>
+                    <div class="box-body table-responsive no-padding">
+                        <div class="col-sm-12" id="PaggingTr">
+                            <table class="table table-bordered table-striped dataTable">
+
+    <tbody><tr id="Sorting">
+           <th> <a> S No.</a>
+           </th>
+           <th>
+            <a> Name</a></th>
+           <th>
+            <a> Email</a>
+           </th>
+        <th>
+            <a> Type</a></th>
+
+       <!-- <th>
+            <a> Followers</a></th>
+
+        <th>
+            <a> Following</a></th>
+        <th>
+            <a> Products</a></th>
+        <th>
+            <a> Posts</a></th>-->
+        <th>
+            <a> Inbox</a></th>
+        <th>
+            <a> Sentbox</a></th>
+           <th>
+            <a> Status</a></th>
+
+          <th><a>Action</a></th>
+    </tr>
+      
+     <tr  ng-repeat="item in results">
+
+
+         <td> {{itemsPerPage*(currentPage-1) + $index  + 1}}</td>
+                  <td>{{item.name + ' ' + item.lastName }}</td>
+                      <td>{{item.email}}</td>
+                  <td>{{item.type}}</td>
+        <!-- <td>   <a  style="cursor: pointer;" ng-click="followers(item._id)">followers</a></td>
+         <td>   <a  style="cursor: pointer;" ng-click="following(item._id)">following</a></td>
+
+
+         <td><span class="label label-success"><a ui-sref="admin-product-list({ userId:item._id })" style="color:white">Products</a></span> </td>
+         <td><span class="label label-success"><a ui-sref="admin-post-list({ userId:item._id })" style="color:white">Posts</a></span> </td>-->
+         <td><span class="label label-success"><a ui-sref="admin-inbox-list({ userId:item._id })" style="color:white">Inbox</a></span> </td>
+         <td><span class="label label-success"><a ui-sref="admin-sentbox-list({ userId:item._id })" style="color:white">Sentbox</a></span> </td>
+
+         <td><span ng-if="!item.status" class="label label-danger">In Active</span>
+                     <span ng-if="item.status" class="label label-success"> Active</span>
+                     </td>
+                   <td>
+                                    <span><a ng-if="item.status" ng-click="statusChange(item.id,item.status)" class="fa fa-fw fa-check table-status-link custom_link"></a></span>
+                                     <span><a ng-if="!item.status" ng-click="statusChange(item.id,item.status)" class="fa fa-fw fa-ban table-status-link custom_link"></a></span>
+                                <span><a ng-click="delete(item.id)" class="table-delete-link fa fa-fw fa-close" title="Delete User"></a></span>
+                <span><a ui-sref="user-edit({ id:item._id })" class="fa fa-fw fa-edit"></a></span>
+
+            </td>
+                 
+               
+                </tr>
+
+           
+        
+        
+       
+        
+       
+       
+       
+</tbody></table>
+
+
+<uib-pagination total-items="totalItems" boundary-links="true" ng-model="currentPage"
+                                    ng-change="getUserList()" class="pagination-sm"
+                                    items-per-page="itemsPerPage"></uib-pagination>
+                         </div>
+                    </div>
+                  
+                    <!-- /.box-body -->
+                    </form>                </div>
+            </div>
+            <!-- /.box -->
+        </div>
+    </div>
+    <!-- /.row -->
+</section>
+<!-- /.content -->
+                </div>
+
+
+  <script type="text/ng-template" id="followers.html">
+      <div class="modal-header">
+          <h3>Followers!</h3>
+      </div>
+      <table class="table table-bordered table-striped dataTable">
+
+          <tbody>
+          <tr id="Sorting">
+              <th><a> S No.</a>
+              </th>
+
+              <th>
+                  <a> User Name</a>
+              </th>
+              <th>
+                  <a>User Email</a>
+              </th>
+              <th>
+                  <a>Action</a>
+              </th>
+
+
+          </tr>
+          <tr ng-repeat="item in users.data">
+
+
+              <td> {{$index + 1}}</td>
+              <td>{{item.follower.name }}</td>
+              <td>{{item.follower.email }}</td>
+              <td>
+                <span><a ng-click="cancelFollower(item.follower._id,item.following)"
+                         class="table-delete-link fa fa-fw fa-close"
+                         title="Cancel"></a></span>
+              </td>
+
+          </tr>
+
+
+          </tbody>
+
+      </table>
+      <div class="container">
+          <div class="col-sm-6">
+              <button class="btn btn-warning" ng-click="cancel()">Cancel</button>
+          </div>
+      </div>
+
+  </script>
+
+
+  <script type="text/ng-template" id="following.html">
+      <div class="modal-header">
+          <h3>Following!</h3>
+      </div>
+      <table class="table table-bordered table-striped dataTable">
+
+          <tbody>
+          <tr id="Sorting">
+              <th><a> S No.</a>
+              </th>
+
+              <th>
+                  <a> User Name</a>
+              </th>
+              <th>
+                  <a>User Email</a>
+              </th>
+              <th>
+                  <a>Action</a>
+              </th>
+
+
+          </tr>
+
+          <tr ng-repeat="item in users.data">
+
+
+              <td> {{$index + 1}}</td>
+              <td>{{item.following.name }}</td>
+              <td>{{item.following.email }}</td>
+
+              <td>
+                <span><a ng-click="cancelFollowing(item.follower,item.following._id)"
+                         class="table-delete-link fa fa-fw fa-close"
+                         title="Cancel"></a></span>
+              </td>
+
+
+
+
+
+
+
+
+          </tr>
+
+
+          </tbody>
+
+      </table>
+      <div class="container">
+          <div class="col-sm-6">
+              <button class="btn btn-warning" ng-click="cancel()">Cancel</button>
+          </div>
+      </div>
+
+  </script>
