@@ -80,7 +80,7 @@ module.exports = function (grunt) {
                     out : './dump',
                 },
                 restore:{
-                    path : './dump/socialsite',
+                    path : './dump/Be_Up',
                     drop : true
                 }
             }
