@@ -9,10 +9,10 @@ module.exports.getInit = function (modelName, callback) {
             var NewAdmin = new ModelObj({
                 "address": "test",
                 "deleted": 0,
-                "email": "hemant.chuphal@gmail.com",
-                "name": "Hemant Chuphall",
-                "password": "$2a$08$Dki47iwZk8MMeFOhQrcTheaDSKsm58q2Ah8FyqgPT7FaHwehPhSt6",
-                "phone": "98786776522",
+                "email": "admin@gmail.com",
+                "name": "Mithilesh",
+                "password": "$2a$08$UsTqmanm6py1oaO.8LUCYepI8NrrKRegWKRHr4IxUUrNTC6spgDT.",
+                "phone": "7879404052",
                 "type": "Admin",
                 "status": 1
             });
