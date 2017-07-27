@@ -1,0 +1,106 @@
+<div class="content-wrapper" style="min-height: 426px;" ng-init="getProductCategoryList()">
+    <!-- Content Header (Page header) -->
+    <!-- Main content -->
+    <section class="content">
+        <div class="row">
+            <div class="col-xs-12">
+                <div class="box">
+                    <div class="box-body">
+                        <div class="box-header with-border ">
+                            <div class="col-sm-10">
+                                <h2 class="box-title"><strong>Product Category List</strong></h2>
+                            </div>
+                            <div class="col-sm-2">
+                                <a ui-sref="product-category-add" class="fa fa-plus btn btn-block btn-primary"> Add Category</a>
+                            </div>
+                        </div>
+
+                        <div class="box-body " style="padding-left: 0px;padding-right: 0px;">
+
+                            <div class="col-sm-10 ">
+
+                            </div>
+                            <div class="col-sm-2 ">
+
+
+                            </div>
+
+
+                        </div>
+
+
+                        <!-- /.box-header -->
+                        <form method="post" accept-charset="utf-8" id="PageViewForm"
+                              action="/projects/cakeadmin/appunisonadmin/categoryListing">
+                            <div style="display:none;"><input name="_method" value="POST" type="hidden"></div>
+                            <div class="box-body table-responsive no-padding">
+                                <div class="col-sm-12" id="PaggingTr">
+                                    <table class="table table-bordered table-striped dataTable">
+
+                                        <tbody>
+                                        <tr id="Sorting">
+                                            <th><a> S No.</a>
+                                            </th>
+                                            <th>
+                                                <a> Category Name</a></th>
+                                            <th>
+                                                <a> Parent Category</a>
+                                            </th>
+                                            <th>
+                                                <a> Status</a></th>
+
+                                            <th><a>Action</a></th>
+                                        </tr>
+
+                                        <tr ng-repeat="item in results">
+
+
+                                            <td> {{itemsPerPage*(currentPage-1) + $index  + 1}}</td>
+                                            <td>{{item.name }}</td>
+                                            <td ng-if="item.parent.name">{{item.parent.name}}</td>
+                                            <td ng-if="!item.parent.name">Parent</td>
+
+
+                                            <td><span ng-if="!item.status" class="label label-danger">In Active</span>
+                                                <span ng-if="item.status" class="label label-success"> Active</span>
+                                            </td>
+                                            <td>
+                                                <span><a ng-if="item.status"
+                                                         ng-click="statusChange(item.id,item.status)"
+                                                         class="fa fa-fw fa-check table-status-link custom_link"></a></span>
+                                                <span><a ng-if="!item.status"
+                                                         ng-click="statusChange(item.id,item.status)"
+                                                         class="fa fa-fw fa-ban table-status-link custom_link"></a></span>
+                                                <span><a ng-click="delete(item.id)"
+                                                         class="table-delete-link fa fa-fw fa-close"
+                                                         title="Delete User"></a></span>
+                                                <span><a ui-sref="product-category-edit({ id:item._id })"
+                                                         class="fa fa-fw fa-edit"></a></span>
+                                            </td>
+
+
+                                        </tr>
+
+
+                                        </tbody>
+                                    </table>
+
+
+                                    <uib-pagination total-items="totalItems" boundary-links="true"
+                                                    ng-model="currentPage"
+                                                    ng-change="getAdminList()" class="pagination-sm"
+                                                    items-per-page="itemsPerPage"></uib-pagination>
+                                </div>
+                            </div>
+
+                            <!-- /.box-body -->
+                        </form>
+                    </div>
+                </div>
+                <!-- /.box -->
+            </div>
+        </div>
+        <!-- /.row -->
+    </section>
+    <!-- /.content -->
+</div>

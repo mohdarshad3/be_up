@@ -1,0 +1,67 @@
+<div class="userBanner" ng-init="editUserProfile()">
+  <img ng-if="!fromData.coverPic" src="front/img/profilePageBanner.png" alt="">
+  <img ng-if="fromData.coverPic" ng-src="{{ imageUrl + 'uploads/admin/' + fromData.coverPic }}" width="719" height="233" alt="">
+ <!-- <form name="coverPic"  id="coverPic" ng-submit="saveCoverPic()">
+    <div class="uploadPic">
+      <span><img src="front/img/uploadPic_icon.png" alt=""></span>
+      <div class="file_button_container" ngf-select ng-model="fromData.image"
+           required name="image" ngf-pattern="'image/*'"
+           ngf-accept="'image/*'" ng-change="changeCoverPic($event)"><span> Upload  Picture</span></div>
+    </div>
+  </form> -->
+  <div class="row edit_section">
+    <div class="col-md-4">
+      <div class="box box-primary">
+
+         <img class="img-responsive img-circle" ng-if="!fromData.profilePic" src="front/img/profilePic_privateTimeline.jpg" alt="userpic">
+        <img class="img-responsive img-circle" ng-if="fromData.profilePic" ng-src="{{ imageUrl + 'uploads/admin/' + fromData.profilePic }}" alt="userpic" width="200" height="200">
+
+
+        <h3 class="name text-center">{{fromData.name}} </h3>
+        <p class="text-center"> {{fromData.type}} </p>
+        <ul class="list-group">
+          <li  ng-init="getFollowersCount()"><b>followers</b><a  class="pull-right"> {{FollowersCount}}</a></li>
+          <li ng-init="getFollowingCount()"><b>following</b><a  class="pull-right"> {{FollowingCount}}</a></li>
+
+        </ul>
+      </div>
+    </div>
+    <div class="col-md-8">
+      <div class="info-tab">
+        <div class="tab ">
+          <button class="tablinks">Edit Profile</button>
+         <!-- <button class="tablinks" onclick="openCity(event, 'Password')">Change Password</button>
+          <button class="tablinks" onclick="openCity(event, 'Extra')">Extra</button> -->
+        </div>
+
+
+
+        <div class="tabcontent" style="display:block;" ui-view="details"></div>
+
+      </div>
+    </div>
+
+  </div>
+
+
+
+
+<style>
+
+  body > .container {
+    margin-top: 80px;
+    padding:0;
+	width:1050px;
+	
+  }
+
+
+
+</style>
+
+
+
+
+
+
+

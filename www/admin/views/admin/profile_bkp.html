@@ -1,0 +1,64 @@
+<div class="content-wrapper" style="min-height: 426px;" ng-init="adminProfile()">
+
+    <section class="content">
+        <div class="row">
+            <div class="col-md-12 centered">
+                <div class="box box-primary">
+
+                    <form  name="SignUpFrom" ng-submit="updateProfile(SignUpFrom.$valid)">
+                        <div class="box-header with-border">
+                            <h3 class="box-title"><strong>User Profile</strong></h3>
+                        </div>
+                        <div class="box-body">
+
+
+
+
+                            <div class="form-group col-md-9">
+                                <label>Name</label>
+                                <div class="input text"><input name="name"  ng-model="fromData.name" class="form-control tooltipstered" placeholder="Name" id="name" readonly type="text"></div>                    </div>
+
+
+
+                            <div class="form-group col-md-9">
+                                <label>Email</label>
+                                <div class="input text"><input name="Email" type="email"  ng-model="fromData.email" class="form-control tooltipstered" placeholder="Email" id="description" readonly required></div>                    </div>
+
+
+
+
+                            <div class="form-group col-md-9">
+                                <label>Phone</label>
+                                <div class="input text"><input name="Phone" type="text"  ng-model="fromData.phone" class="form-control tooltipstered" placeholder="Phone" id="description" readonly required></div>                    </div>
+
+
+
+
+
+
+
+                            <div class="form-group col-md-9" ng-if="fromData.image" >
+                                <label class="control-label">Profile Pic:</label>
+
+                                <div class="controls">
+                                    <img  ng-src="{{ imageUrl + 'uploads/admin/' + fromData.image }}"   />
+
+                                </div>
+                            </div>
+
+                        </div>
+
+                </div>
+            </div>
+    </section>
+
+</div>
+
+
+
+
+
+
+
+
+

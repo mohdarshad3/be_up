@@ -1,0 +1,112 @@
+<div class="content-wrapper" style="min-height: 426px;">
+    <section class="content">
+        <div class="row">
+            <div class="col-md-12 centered">
+                <div class="box box-primary">
+
+                    <form name="SignUpFrom" ng-submit="addProductCategory(SignUpFrom.$valid)">
+                        <div class="box-header with-border">
+                            <h3 class="box-title"><strong>Add New Product Category</strong></h3>
+                        </div>
+                        <div class="box-body">
+
+                            <div class="form-group col-md-9">
+                                <label>Name*</label>
+
+                                <div class="input text"><input name="category_name" ng-model="fromData.name"
+                                                               class="form-control tooltipstered" placeholder="Name"
+                                                               id="name" type="text" required maxlength="30">
+                                </div>
+                                <div class="error" ng-messages="SignUpFrom.category_name.$error"
+                                     ng-show="SignUpFrom.category_name.$invalid && !SignUpFrom.category_name.$pristine">
+                                    <div ng-message="required" class="error-class">Please Enter Name</div>
+                                    <div ng-message="maxlength" class="error-class">This field accept maximum 20
+                                        characters
+                                    </div>
+                                </div>
+                            </div>
+                            <div class="form-group col-md-9" ng-init="getAllParentCategoryList()">
+                                <label>Parent Category</label>
+                                <div class="input text">
+                                    <select ng-model="fromData.parent" class="form-control" name="parent">
+                                        <option value="">Select Category</option>
+                                        <option ng-repeat="x in categories" value="{{x._id}}">{{x.name}}</option>
+                                    </select>
+                                </div>
+
+                                <div ng-messages="SignUpFrom.admin_type.$error"
+                                     ng-show="SignUpFrom.admin_type.$invalid && !SignUpFrom.admin_type.$pristine">
+                                    <div ng-message="required" class="error-class">Please Select Admin Type</div>
+                                </div>
+
+                            </div>
+
+
+                            <div class="form-group col-md-9">
+                                <label>Description*</label>
+
+                                <div class="input text">
+                                    <textarea ng-model="fromData.description" class="form-control" name="category_description" rows="5"
+                                            required>
+                                         </textarea>
+                                </div>
+
+                                <div class="error" ng-messages="SignUpFrom.category_description.$error"
+                                     ng-show="SignUpFrom.category_description.$invalid && !SignUpFrom.category_description.$pristine">
+                                    <div ng-message="required" class="error-class">Please Enter Description</div>
+                                </div>
+
+                            </div>
+
+
+
+
+                            <div class="form-group col-md-9">
+                                <label>Profile Picture*</label>
+
+                                <div class="controls">
+                                    <div class="span12">
+                                        <div class="fileupload-new  upload_wrp">
+                                            <img src="http://www.placehold.it/200x150/EFEFEF/AAAAAA&amp;text=no+image"
+                                                 ng-show="fromData.image == undefined"/>
+
+                                            <div ng-if="fromData.image != undefined">
+                                                <img ngf-thumbnail="fromData.image || '/thumb.jpg'">
+                                            </div>
+                                        </div>
+                                        <div class="span6">
+                                            <div class="file_button_container" ngf-select ng-model="fromData.image"
+                                                 required name="image" ngf-pattern="'image/*'"
+                                                 ngf-accept="'image/*'"
+                                                 ngf-resize="{width: 160, height: 160}"><span> Upload Image</span></div>
+                                        </div>
+
+
+                                    </div>
+                                </div>
+                            </div>
+
+
+                        </div>
+                        <div class="box-body">
+                            <div class="form-group col-md-2">
+                                <input name="id" id="idField" class="tooltipstered" type="hidden">
+                                <button type="submit" ng-disabled="SignUpFrom.$invalid"
+                                        class="fa fa-save btn btn-block btn-primary"> Submit
+                                </button>
+                            </div>
+                            <div class="form-group col-md-2">
+                                <button type="button" class="btn btn-block btn-info fa fa-chevron-left padding-left-lg"
+                                        onclick="javascript:history.go(-1);"> Back
+                                </button>
+                            </div>
+                        </div>
+                    </form>
+                </div>
+            </div>
+        </div>
+    </section>
+
+</div>
+
+

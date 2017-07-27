@@ -1,0 +1,100 @@
+<div class="row" ng-init="getProductDetail()">
+    <div class="product_detail">
+        <!--<div class="prdct_img">-->
+        <!--<img ng-if="!productData.image" ng-src="front/img/product.png" height ="180px" width="250px" alt="">-->
+        <!--<img ng-if="productData.image" ng-src="{{ imageUrl + 'uploads/admin/' + productData.image }}"  height ="180px" width="250px" alt="">-->
+
+        <!--</div>-->
+        <div class="prdct_img">
+                <carousel interval="myInterval">
+                    <slide ng-if="productData.image">
+                        <img class="slideImage"  ng-src="{{ imageUrl + 'uploads/admin/' + productData.image }}">
+
+                    </slide>
+                    <slide ng-if="productData.image2">
+                        <img class="slideImage" ng-src="{{ imageUrl + 'uploads/admin/' + productData.image2 }}">
+
+                    </slide>
+                    <slide ng-if="productData.image3">
+                        <img class="slideImage"  ng-src="{{ imageUrl + 'uploads/admin/' + productData.image3 }}">
+
+                    </slide>
+                </carousel>
+        </div>
+        <div class="pro_info">
+
+            <div class="Product_name">{{productData.title}}</div>
+            <div class="ratesection">
+                <span class="star"> {{productData.avgRating}}★</span>
+                <span class="rates">Average Rating</span>
+            </div>
+            <div>Price: ${{productData.price}}</div>
+            <div>Url: {{productData.productUrl}}</div>
+
+            <div class="desc">{{productData.description}}</div>
+
+            <a class="btn btn-default" target="_blank" ng-href="{{productData.productUrl}}">By Product</a>
+
+        </div>
+    </div>
+</div>
+<div class="row">
+    <div class="reviews_list">
+        <div class="nbm">
+            <h3>Rates</h3>
+        </div>
+
+        <div class="users_list" ng-repeat="ratingDetail in productData.rate">
+            <div class="user_1">
+                <a ui-sref="user-dashboard({userId:ratingDetail.user._id})">
+                    <img ng-if="!ratingDetail.user.profilePic" src="front/img/profilePic.png">
+                    <img ng-if="ratingDetail.user.profilePic"
+                         src="{{ imageUrl + 'uploads/admin/' + ratingDetail.user.profilePic }}">
+                </a>
+                <span class="usercomment">{{ratingDetail.user.name + ' ' + ratingDetail.user.lastName}}</span>
+                <span class="star two" style="float:right"> {{ratingDetail.rating}}★</span>
+
+            </div>
+
+        </div>
+    </div>
+</div>
+
+
+<script>
+    /*$(document).ready(function() {
+     $(".desc a").click(function(){
+     $(".desc").css("height", "100px");
+     });
+     });*/
+
+    var left = true;
+    $('.abc').on('click', function () {
+        if (left) {
+            $('.desc').animate({
+                'height': "+=80px"
+            });
+
+            $(this).text("Show less [-]")
+
+            left = false;
+        } else {
+            $('.desc').animate({
+                'height': "-=80px"
+            });
+
+            $(this).text("Show More [+]")
+            left = true;
+        }
+    });
+
+
+</script>
+
+<style>
+    body > .container {
+        margin-top: 150px;
+        padding: 0;
+
+    }
+</style>

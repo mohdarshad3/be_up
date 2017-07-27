@@ -1,0 +1,22 @@
+Shortcut	Description
+⇧ ⌘ A	Find action by name
+⌥ Enter	Show the list of available intention actions.
+⌥ F1	Switch between views ( Project, Structure, etc.).
+^ Tab	Switch between the tool windows and files opened in the editor.
+⌘ Up	Show the Navigation bar.
+⌘ J	Insert a live template.
+⌥ ⌘ J	Surround with a live template.
+⌘ Down	Edit an item from the Project or another tree view.
+⌘ Slash
+⌥ ⌘ Slash	Comment or uncomment a line or fragment of code with the line or block comment.
+⌘ O
+⇧ ⌘ O	Find class or file by name.
+⌘ D	Duplicate the current line or selection.
+⌥ Up and ⌥ Down	Incremental expression selection.
+⌘ F	Find text string in the current file.
+⇧ ⌘ F	Find text in the project or in the specified directory.
+Double-press Shift	Search everywhere.
+⇧ ⌘ F7	Quick view the usages of the selected symbol.
+⌘ NumPad Plus
+⌘ NumPad -	Expand or collapse a code block in the editor.
+^ Space	Invoke code completion.

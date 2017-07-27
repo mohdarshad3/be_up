@@ -1,0 +1,28 @@
+{
+  "name": "moment-import",
+  "description": "reference the moment library using html imports",
+  "version": "1.0.1",
+  "main": "moment-import.html",
+  "authors": [
+    "S. Francis"
+  ],
+  "license": "MIT",
+  "keywords": [
+    "web",
+    "components",
+    "moment",
+    "html imports"
+  ],
+  "moduleType": [],
+  "homepage": "https://github.com/ellipticaljs/moment-import",
+  "ignore": [
+    "**/.*",
+    "node_modules",
+    "bower_components",
+    "test",
+    "tests"
+  ],
+  "dependencies": {
+    "moment": "~2.12.0"
+  }
+}

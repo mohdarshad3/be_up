@@ -1,0 +1,42 @@
+<div class="login-box">
+  <div class="login-logo">
+    <a style="color: #fff;"><b>{{appName}} front</b></a>
+  </div>
+  <!-- /.login-logo -->
+  <div class="login-box-body">
+    <p class="login-box-msg">Sign in to {{appName}} front</p>
+
+    <form class="login-form" name="loginFrom" ng-submit="doLogin()" novalidate>
+      <div class="form-group has-feedback">
+        <input type="email" class="form-control" ng-model="fromData.email" placeholder="Email" required>
+        <span class="glyphicon glyphicon-envelope form-control-feedback"></span>
+      </div>
+      <div class="form-group has-feedback">
+        <input type="password" class="form-control" ng-model="fromData.password" placeholder="Password" minlength="3" required>
+        <span class="glyphicon glyphicon-lock form-control-feedback"></span>
+      </div>
+
+      <div class="row">
+
+        <!-- /.col -->
+        <div class="col-xs-4">
+          <button type="submit" ng-disabled="!loginFrom.$valid" class="btn btn-primary btn-block btn-flat">Sign In</button>
+        </div>
+
+        <!-- /.col -->
+      </div>
+      <div class="form-group">
+        <br>
+        <a class="text-center" ui-sref="front-forgot-password">Forgot Password</a>
+      </div>
+    </form>
+
+
+    <!-- /.social-auth-links -->
+
+    <!--<a href="#">I forgot my password</a><br>-->
+    <a ui-sref="front-user-signup" class="text-center">Register a new membership</a>
+
+  </div>
+  <!-- /.login-box-body -->
+</div>

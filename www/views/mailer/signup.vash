@@ -1,0 +1,14 @@
+<html lang="en">
+    <head>
+        <meta charset="utf-8">
+        <meta name="viewport" content="initial-scale=1, maximum-scale=1, user-scalable=no, width=device-width">
+    </head>
+    <body>
+        <h4> Hi @model.name </h4>
+        <h4> Your account has been created successfully. </h4>
+        <h4> Activate your account using the following information: </h4>
+        <h4> Email: @model.email </h4>
+        <h4> Key: @model.otp </h4>
+        <h4> Link: <a href="@model.baseUrl" target="_blank">  @model.baseUrl</h4>
+    </body>
+</html>

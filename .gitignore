@@ -1,0 +1,17 @@
+.DS_Store
+.nodemonignore
+.sass-cache/
+npm-debug.log
+node_modules/
+public/lib/
+app/tests/coverage/
+.bower-*/
+.idea/
+.git/
+*~
+*.orig
+www/other_components/
+/nbproject/private/
+/.project
+/alexa/nbproject/private/
+/demo/nbproject/private/

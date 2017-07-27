@@ -1,0 +1,177 @@
+<div class="content-wrapper" style="min-height: 426px;">
+    <section class="content">
+        <div class="row">
+            <div class="col-md-12 centered">
+                <div class="box box-primary">
+
+                    <form name="SignUpFrom" ng-submit="addUser(SignUpFrom.$valid)">
+                        <div class="box-header with-border">
+                            <h3 class="box-title"><strong>Add New User</strong></h3>
+                        </div>
+                        <div class="box-body">
+
+                            <div class="form-group col-md-9">
+                                <label>User Type</label>
+
+                                <div>
+                                    <select ng-model="fromData.type" name="user_type" class="form-control" required>
+                                        <option value="">Select Type</option>
+                                        <option ng-repeat="x in userType" value="{{x.type}}">{{x.type}}</option>
+                                    </select>
+                                </div>
+                                <div ng-messages="SignUpFrom.user_type.$error"
+                                     ng-show="SignUpFrom.user_type.$invalid && !SignUpFrom.user_type.$pristine">
+                                    <div ng-message="required" class="error-class">Please Select User Type</div>
+                                </div>
+
+                            </div>
+
+
+                            <div class="form-group col-md-9">
+                                <label>Name</label>
+
+                                <div class="input text"><input name="first_name" ng-model="fromData.name"
+                                                               class="form-control tooltipstered" placeholder="Name"
+                                                               id="name" type="text" required ng-maxlength="20"></div>
+                                <div ng-messages="SignUpFrom.first_name.$error"
+                                     ng-show="SignUpFrom.first_name.$invalid && !SignUpFrom.first_name.$pristine">
+                                    <div ng-message="required" class="error-class">Please Enter Name</div>
+                                    <div ng-message="maxlength" class="error-class">This field accept maximum 20
+                                        characters
+                                    </div>
+                                </div>
+
+                            </div>
+
+
+                            <div class="form-group col-md-9">
+                                <label>Last Name</label>
+
+                                <div class="input text"><input name="last_name" ng-model="fromData.lastName"
+                                                               class="form-control tooltipstered"
+                                                               placeholder="Last Name" type="text" required
+                                                               ng-maxlength="20"></div>
+                                <div ng-messages="SignUpFrom.last_name.$error"
+                                     ng-show="SignUpFrom.last_name.$invalid && !SignUpFrom.last_name.$pristine">
+                                    <div ng-message="required" class="error-class">Please Enter Last Name</div>
+                                    <div ng-message="maxlength" class="error-class">This field accept maximum 20
+                                        characters
+                                    </div>
+                                </div>
+
+
+                            </div>
+
+
+                            <div class="form-group col-md-9">
+                                <label>Email</label>
+
+                                <div class="input text"><input name="email" type="email" ng-model="fromData.email"
+                                                               class="form-control tooltipstered" placeholder="Email"
+                                                               id="description" email required></div>
+                                <div ng-messages="SignUpFrom.email.$error"
+                                     ng-show="SignUpFrom.email.$invalid && !SignUpFrom.email.$pristine">
+                                    <div ng-message="required" class="error-class">Please Enter Email</div>
+                                    <div ng-message="email" class="error-class">Please enter valid email</div>
+                                </div>
+                            </div>
+
+
+                            <div class="form-group col-md-9">
+                                <label>Company</label>
+
+                                <div class="input text"><input name="company" ng-model="fromData.company"
+                                                               class="form-control tooltipstered" placeholder="Company"
+                                                               type="text" required ng-maxlength="50"></div>
+                                <div ng-messages="SignUpFrom.company.$error"
+                                     ng-show="SignUpFrom.company.$invalid && !SignUpFrom.company.$pristine">
+                                    <div ng-message="required" class="error-class">Please Enter Company Name</div>
+                                    <div ng-message="maxlength" class="error-class">This field accept maximum 50
+                                        characters
+                                    </div>
+
+                                </div>
+
+
+                            </div>
+
+                            <div class="form-group col-md-9">
+                                <label>Address</label>
+
+                                <div class="input text"><input name="address" g-places-autocomplete
+                                                               ng-model="fromData.address"
+                                                               class="form-control tooltipstered" placeholder="Address"
+                                                               type="text" required></div>
+                                <div ng-messages="SignUpFrom.address.$error"
+                                     ng-show="SignUpFrom.address.$invalid && !SignUpFrom.address.$pristine">
+                                    <div ng-message="required" class="error-class">Please Enter Address</div>
+
+                                </div>
+
+
+                            </div>
+
+                            <div class="form-group col-md-9">
+                                <label>Date Of birth</label>
+                                <input class="form-control" jqdatepicker ng-readonly="true" name="fromData.dob" data-ng-model="fromData.dob" type="text">
+                                 </div>
+
+
+                            <div class="form-group col-md-9">
+                                <label>Password</label>
+
+                                <div class="input text"><input name="password" ng-model="fromData.password"
+                                                               ng-minlength="6" ng-maxlength="30"
+                                                               class="form-control tooltipstered" placeholder="password"
+                                                               type="password" required></div>
+                                <div ng-messages="SignUpFrom.password.$error"
+                                     ng-show="SignUpFrom.password.$invalid && !SignUpFrom.password.$pristine">
+                                    <div ng-message="required" class="error-class">Please Enter Password</div>
+
+                                </div>
+
+
+                            </div>
+
+
+                            <div class="form-group col-md-9">
+                                <label>Confirm Password</label>
+
+                                <div class="input text"><input name="confirmPassword"
+                                                               ng-model="fromData.confirmPassword" ng-minlength="6"
+                                                               ng-maxlength="30" class="form-control tooltipstered"
+                                                               placeholder="confirm password" type="password"
+                                                               pw-check="fromData.password" required></div>
+                                <div ng-messages="SignUpFrom.confirmPassword.$error"
+                                     ng-show="SignUpFrom.confirmPassword.$invalid && !SignUpFrom.confirmPassword.$pristine">
+                                    <div ng-message="required" class="error-class">Please Enter Confirm Password</div>
+
+                                </div>
+
+
+                            </div>
+
+
+                        </div>
+                        <div class="box-body">
+                            <div class="form-group col-md-2">
+                                <input name="id" id="idField" class="tooltipstered" type="hidden">
+                                <button type="submit" ng-disabled="SignUpFrom.$invalid"
+                                        class="fa fa-save btn btn-block btn-primary"> Submit
+                                </button>
+                            </div>
+                            <div class="form-group col-md-2">
+                                <button type="button" class="btn btn-block btn-info fa fa-chevron-left padding-left-lg"
+                                        onclick="javascript:history.go(-1);"> Back
+                                </button>
+                            </div>
+                        </div>
+                    </form>
+                </div>
+            </div>
+        </div>
+    </section>
+
+</div>
+
+

@@ -1,0 +1,93 @@
+<style>
+    #Container{
+        margin-top:0 !important;}
+</style>
+<hgroup>
+    <h1 class="pageHeading" style="margin-top:0;">Connect With People</h1>
+    <h2 class="pageSubHeading">Professionally, Socially, Or just “grow your network”</h2>
+</hgroup>
+
+<div class="container1">
+
+
+
+    <div class="row">
+
+        <form  name="loginFrom" ng-submit="frontUserSignUp(loginFrom.$valid)" novalidate>
+
+            <div class="formHeader">
+                <div class="heading">Not A Registerd User?</div>
+                <div class="subHeading">Get Started Now</div>
+            </div>
+
+
+            <div class="form-group">
+                <div class="pull-left" style="width:49%; margin:0 5px 0 0;"><label>First Name*</label>
+                    <input class="form-control" name="first_name" ng-model="fromData.name" placeholder="First Name" type="text" ng-maxlength="20" ng-minlength="3" required>
+                    <div ng-messages="loginFrom.first_name.$error"
+                         ng-show="loginFrom.first_name.$invalid && !loginFrom.first_name.$pristine">
+                        <div ng-message="required" class="error-class">Please Enter First Name</div>
+                    </div></div>
+                <div class="pull-left" style="width:49%;">
+                    <label for="lastName">Last Name*</label>
+                    <input class="form-control" name="last_name" id="lastName" ng-model="fromData.lastName" placeholder="Last Name" type="text" required>
+                    <div ng-messages="loginFrom.last_name.$error"
+                         ng-show="loginFrom.last_name.$invalid && !loginFrom.last_name.$pristine">
+                        <div ng-message="required" class="error-class">Please Enter Last Name</div>
+                    </div>
+                </div>
+            </div>
+
+
+
+
+            <div class="form-group">
+                <label for="exampleInputEmail1">User Type*</label>
+
+                <select ng-model="fromData.type" name="user_type" class="form-control" required>
+                    <option value="">Select Type</option>
+                    <option ng-repeat="x in userType" value="{{x.type}}">{{x.type}}</option>
+                </select>
+                <div ng-messages="loginFrom.user_type.$error"
+                     ng-show="loginFrom.user_type.$invalid && !loginFrom.user_type.$pristine">
+                    <div ng-message="required" class="error-class">Please Select User TYpe</div>
+                </div>
+            </div>
+
+            <div class="form-group">
+                <label for="exampleInputEmail1">Email address</label>
+                <input class="form-control" name="user_email" id="exampleInputEmail1" ng-model="fromData.email" placeholder="Email" type="email" required>
+                <div ng-messages="loginFrom.user_email.$error"
+                     ng-show="loginFrom.user_email.$invalid && !loginFrom.user_email.$pristine">
+                    <div ng-message="required" class="error-class">Please Enter Email</div>
+                    <div ng-message="email" class="error-class">Please Enter Correct Email</div>
+                </div>
+            </div>
+            <div class="form-group">
+                <label for="exampleInputPassword1">Password</label>
+                <input class="form-control" id="exampleInputPassword1" name="password" placeholder="Password" ng-model="fromData.password" type="password" required ng-minlength="6" ng-maxlength="10">
+                <div ng-messages="loginFrom.password.$error"
+                     ng-show="loginFrom.password.$invalid && !loginFrom.password.$pristine">
+                    <div ng-message="required" class="error-class">Please Enter Password</div>
+                    <div ng-message="minlength" class="error-class">Please Enter Minimum 6 character</div>
+                    <div ng-message="maxlength" class="error-class">Please Enter Minimum 10 character</div>
+                </div>
+
+            </div>
+            <div class="form-group">
+                <label for="exampleInputPassword2">Confirm Password</label>
+                <input class="form-control" id="exampleInputPassword2" name="confirmpassword" placeholder="Confirm Password" ng-model="fromData.confirmPassword" type="password" pw-check="fromData.password" required>
+            </div>
+
+            <small>
+                By clicking Join now, you agree to the <strong>Connectossshpere</strong>
+                <a href="#">User Agreement</a>, <a href="#">Privacy Policy</a>, and <a href="#">Cookie Policy</a>.
+            </small>
+
+            <div>
+                <button type="submit" ng-disabled="!loginFrom.$valid" class="btn btn-default">Submit</button>
+            </div>
+        </form>
+    </div>
+
+</div>

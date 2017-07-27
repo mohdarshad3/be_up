@@ -1,0 +1,75 @@
+<div class="userBanner" ng-init="userProfile();userProductList();userFollowingCheck()">
+  <img ng-if="!userData.coverPic" src="front/img/profilePageBanner.png" alt="">
+  <img ng-if="userData.coverPic" ng-src="{{ imageUrl + 'uploads/admin/' + userData.coverPic }}" width="1170"  alt="">
+</div>
+<div class="userSec">
+  <div class="profilePic">
+    <img ng-if="!userData.profilePic" src="front/img/profilePic.png" alt="">
+    <img ng-if="userData.profilePic" ng-src="{{ imageUrl + 'uploads/admin/' + userData.profilePic }}" width="150" height="150" alt="">
+
+
+  </div>
+
+  <div class="userInfo">
+    <div class="navPills">
+      <button ui-sref="message-board.compose({composeId:userId})">Message</button>
+      <button ui-sref="other-general-timeline({userId:userId})">Public Timeline</button>
+      <button ng-if="userData.type == 'Merchant' || userData.type == 'Producer'" ui-sref="other-products({userId:userId})">User's Products</button>
+      <button ng-if="userData.type == 'Merchant' || userData.type == 'Service Provider'" ui-sref="other-services({userId:userId})">User's Services</button>
+    </div>
+    <div class="userName" style="width:100px;">{{userData.name}}, <small>{{userData.type}}</small></div>
+    <div>{{userData.company}}</div>
+    <div><flag country="{{ country | lowercase }}" size="32"></flag></div>
+    <div class="desc">{{userData.description}}</div>
+    <div class="usefulLinks"> <a ui-sref="user-followers({userId:userData._id})"><span class="followers" ng-init="getUserFollowersCount()">{{FollowersCount}} followers</span> </a>
+      <a ui-sref="user-following({userId:userData._id})"> <span class="followers" ng-init="getUserFollowingCount()">{{FollowingCount}} following</span></a>
+
+      </span> <span class="url"><a target="_blank" ng-href="">{{userData.email}}</a></span> </div>
+  </div>
+</div>
+<!--
+<div class="userTopProducts">
+  <div class="heading">
+    <div>
+      <h3>Our Top  Products</h3>
+      <div class="ProductAvailability">
+        <label>Product Availability: </label>
+        <input type="text" ng-model="search" autocomplete="off" placeholder="Enter Pincode">
+        <button ng-click="searchProductsByPincode()"  ng-if="search">Search</button>
+      </div>
+    </div>
+  </div>
+
+
+  <div class="productSec" ng-repeat="checkProduct in checkProducts">
+
+    <div class="product">
+      <div class="productTitle"><a target="_blank" href="{{checkProduct.productUrl}}">{{checkProduct.title}}</a></div>
+      <div class="category"><strong>Category:</strong> {{checkProduct.category.name}} <span ng-if="checkProduct.subCategory"> > {{checkProduct.subCategory.name}} </span></div>
+      <div class="rating">
+        <ng-rate-it ng-model="rate[checkProduct._id]"   ng-init="rate[checkProduct._id] = checkProduct.rate" ng-click="ratedCallback(checkProduct._id,loginUserId)"></ng-rate-it>
+
+      </div>
+      <div class="productPic">
+        <a ui-sref="product-detail({productId:checkProduct._id})">
+         
+          <img ng-if="checkProduct.image" src="{{ imageUrl + 'uploads/admin/' + checkProduct.image }}"  alt="">
+          <img ng-if="!checkProduct.image" src="{{ imageUrl + 'uploads/admin/product.png'}}"  alt="">
+
+        </a>
+      </div>
+      <div class="price">${{checkProduct.price}} <small>only</small></div>
+    </div>
+
+
+  </div>
+
+</div> -->
+
+<style>
+  body > .container {
+    margin-top: 75px;
+    padding:0;
+  }
+
+</style>

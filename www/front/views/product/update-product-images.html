@@ -1,0 +1,146 @@
+<div class="addProduct" ng-init="editProduct()">
+    <div class="heading">
+        <h2>Update Product Images</h2>
+
+    </div>
+
+    <form name="coverPic" id="coverPic">
+
+
+        <div class="form-group">
+            <label>Product Image1*:</label>
+
+            <div class="controls">
+                <div class="span6">
+
+                    <div class="col-sm-6">
+                        <div class="file_button_container" ngf-select ng-model="fromData.image"
+                             required name="image" ngf-pattern="'image/*'"
+                             ngf-accept="'image/*'"
+                             ng-change="addProductPic1($event)">
+                            <div class="fileupload-new  upload_wrp">
+                                <img src="front/img/product.png" ng-show="fromData.image == undefined" width="223"  height="105"/>
+
+                                <div ng-if="fromData.image != undefined">
+                                    <img ngf-thumbnail="fromData.image || '/thumb.jpg'" width="223"  height="105">
+                                </div>
+                            </div>
+                            <span>
+
+                            Click To Upload</span></div>
+                    </div>
+
+                    <div class="col-sm-6">
+                        <div class="controls">
+                            <img  ng-src="{{ imageUrl + 'uploads/admin/' + fromData.oldImage }}"  width="223"  height="105"/>
+
+                        </div>
+                    </div>
+
+
+
+                </div>
+            </div>
+        </div>
+
+
+    </form>
+    <div style="clear: both"></div>
+
+    <form name="coverPic" id="coverPic">
+
+
+        <div class="form-group">
+            <label>Product Image2*:</label>
+
+            <div class="controls">
+                <div class="span12">
+
+                    <div class="col-sm-6">
+                        <div class="file_button_container" ngf-select ng-model="ImageData.image2"
+                             required name="image2" ngf-pattern="'image/*'"
+                             ngf-accept="'image/*'"
+                             ng-change="addProductPic2($event)">
+                            <div class="fileupload-new  upload_wrp">
+                                <img src="front/img/product.png" ng-show="ImageData.image2 == undefined" width="223"  height="105"/>
+
+                                <div ng-if="ImageData.image2 != undefined">
+                                    <img ngf-thumbnail="ImageData.image2 || '/thumb.jpg'" width="223"  height="105">
+                                </div>
+                            </div>
+                            <span>
+
+                            Click To Upload</span></div>
+                    </div>
+
+                    <div class="col-sm-6">
+                        <div class="controls">
+                            <img  ng-src="{{ imageUrl + 'uploads/admin/' + fromData.oldImage2 }}"  width="223"  height="105"/>
+
+                        </div>
+                    </div>
+
+
+                </div>
+            </div>
+        </div>
+
+
+    </form>
+    <div style="clear: both"></div>
+    <form name="coverPic" id="coverPic">
+
+
+        <div class="form-group">
+            <label>Product Image3*:</label>
+
+            <div class="controls">
+                <div class="span12">
+
+                    <div class="col-sm-6">
+                        <div class="file_button_container" ngf-select ng-model="formData.image3"
+                             required name="image3" ngf-pattern="'image/*'"
+                             ngf-accept="'image/*'"
+                             ng-change="addProductPic3($event)">
+                            <div class="fileupload-new  upload_wrp">
+                                <img src="front/img/product.png" ng-show="formData.image3 == undefined" width="223"  height="105"/>
+
+                                <div ng-if="formData.image3 != undefined">
+                                    <img ngf-thumbnail="formData.image3 || '/thumb.jpg'" width="223"  height="105">
+                                </div>
+                            </div>
+                            <span>
+
+                            Click To Upload</span></div>
+                    </div>
+
+                    <div class="col-sm-6">
+                        <div class="controls">
+                            <img  ng-src="{{ imageUrl + 'uploads/admin/' + fromData.oldImage3 }}"  width="223"  height="105"/>
+
+                        </div>
+                    </div>
+
+
+                </div>
+            </div>
+        </div>
+
+
+
+    </form>
+    <div style="clear: both"></div>
+    <div class="form-group">
+        <button  class="btn btn-default"  ng-click="updateProduct()">Submit</button>
+
+    </div>
+
+</div>
+
+<style>
+    body > .container {
+        margin-top: 100px;
+        padding: 0;
+    }
+
+</style>

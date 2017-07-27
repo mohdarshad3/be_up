@@ -1,0 +1,33 @@
+<div class="userTopProducts" ng-init="otherProductsList()" infinite-scroll='reddit.nextOtherProduct(userId)' infinite-scroll-disabled='reddit.busy' infinite-scroll-distance='1'>
+  <div class="heading">
+    <div>
+      <h3>Products</h3>
+      <div class="ProductAvailability">
+        <!--<label>Product Availability: </label>
+        <input type="search" placeholder="Enter Pincode"> -->
+      </div>
+    </div>
+  </div>
+
+  <div class="productSec" ng-repeat="item in reddit.items">
+    <div class="product">
+      <div class="productTitle"><a target="_blank" href="{{item.productUrl}}">{{item.title}}</a></div>
+      <div class="category"><strong>Category:</strong> {{item.category.name}} <span ng-if="item.subCategory"> > {{item.subCategory.name}} </span></div>
+      <div class="rating"><img src="front/img/rating.png" alt=""></div>
+      <div class="productPic"><img src="{{ imageUrl + 'uploads/admin/' + item.image }}"  width="223" height="105" alt=""></div>
+      <div class="price">${{item.price}} <small>only</small></div>
+    </div>
+
+
+  </div>
+  <div ng-show='!reddit.busy'>Loading data...</div>
+
+</div>
+
+<style>
+  body > .container {
+    margin-top: 75px;
+    padding:0;
+  }
+
+</style>

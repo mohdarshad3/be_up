@@ -1,0 +1,100 @@
+<div class="content-wrapper" style="min-height: 426px;" ng-init="getUserInboxList()">
+    <!-- Content Header (Page header) -->
+    <!-- Main content -->
+    <section class="content">
+        <div class="row">
+            <div class="col-xs-12">
+                <div class="box">
+                    <div class="box-body">
+                        <div class="box-header with-border ">
+                            <div class="col-sm-10">
+                                <h2 class="box-title"><strong>Inbox List</strong></h2>
+                            </div>
+
+                        </div>
+
+                        <div class="box-body " style="padding-left: 0px;padding-right: 0px;">
+
+                            <div class="col-sm-10 ">
+
+                            </div>
+                            <div class="col-sm-2 ">
+
+
+                            </div>
+
+
+                        </div>
+
+
+                        <!-- /.box-header -->
+                        <form method="post" accept-charset="utf-8" id="PageViewForm"
+                              action="/projects/cakeadmin/appunisonadmin/categoryListing">
+                            <div style="display:none;"><input name="_method" value="POST" type="hidden"></div>
+                            <div class="box-body table-responsive no-padding">
+                                <div class="col-sm-12" id="PaggingTr">
+                                    <table class="table table-bordered table-striped dataTable">
+
+                                        <tbody>
+                                        <tr id="Sorting">
+                                            <th><a> S No.</a>
+                                            </th>
+
+                                            <th>
+                                                <a> User Name</a>
+                                            </th>
+                                            <th>
+                                                <a>User Email</a>
+                                            </th>
+                                            <th>
+                                                <a>Message</a>
+                                            </th>
+                                            <th>
+                                                <a>Action</a>
+                                            </th>
+
+
+                                        </tr>
+
+                                        <tr ng-repeat="item in results">
+
+
+                                            <td> {{itemsPerPage*(currentPage-1) + $index  + 1}} </td>
+                                            <td>{{item.from.name }}</td>
+                                            <td>{{item.from.email }}</td>
+                                            <td>{{item.description }}</td>
+                                            <td><span><a ng-click="deleteMessage(item._id)"
+                                                         class="table-delete-link fa fa-fw fa-close"
+                                                         title="Delete Message"></a></span>
+                                            </td>
+
+
+
+
+
+                                        </tr>
+
+
+                                        </tbody>
+                                    </table>
+
+
+                                    <uib-pagination total-items="totalItems" boundary-links="true"
+                                                    ng-model="currentPage"
+                                                    ng-change="getUserInboxList()" class="pagination-sm"
+                                                    items-per-page="itemsPerPage"></uib-pagination>
+                                </div>
+                            </div>
+
+                            <!-- /.box-body -->
+                        </form>
+                    </div>
+                </div>
+                <!-- /.box -->
+            </div>
+        </div>
+        <!-- /.row -->
+    </section>
+    <!-- /.content -->
+</div>
+

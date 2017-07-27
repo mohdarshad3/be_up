@@ -1,0 +1,36 @@
+<div class="login-box">
+  <div class="login-logo">
+    <a style="color: #fff;"><b>{{appName}}</b></a>
+  </div>
+  <!-- /.login-logo -->
+  <div class="login-box-body">
+    <p class="login-box-msg">Activate Alexa YAK Account</p>
+
+    <form class="login-form" name="loginFrom" ng-submit="doOtpConfirmation()" novalidate>
+      <div class="form-group has-feedback">
+        <input type="text" class="form-control" ng-model="fromData.otp" placeholder="Enter Key" minlength="3" required>
+        <span class="glyphicon glyphicon-lock form-control-feedback"></span>
+      </div>
+
+      <div class="row">
+
+        <!-- /.col -->
+        <div class="col-xs-4">
+          <button type="submit" ng-disabled="!loginFrom.$valid" class="btn btn-primary btn-block btn-flat">Activate</button>
+        </div>
+        <!-- /.col -->
+      </div>
+      <div class="form-group">
+        <a class="text-center" ui-sref="admin-login">Already activated account</a>
+      </div>
+    </form>
+
+   
+    <!-- /.social-auth-links -->
+
+    <!--<a href="#">I forgot my password</a><br>
+    <a href="#" class="text-center">Register a new membership</a> -->
+
+  </div>
+  <!-- /.login-box-body -->
+</div>

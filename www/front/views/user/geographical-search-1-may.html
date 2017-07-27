@@ -1,0 +1,138 @@
+<div class="userBanner" ng-init="initcodeAddress()">
+
+    <form class="form-horizontal ng-pristine ng-invalid ng-invalid-required ng-valid-minlength ng-valid-maxlength ng-valid-pw-check" name="geographical" ng-submit="searchSubmit(geographical.$valid)">
+
+    <div class="input text">
+        <input name="address" style="margin: 14px 0px;box-shadow:1px 1px 3px 1px #D5DEDC" googleplace="" g-places-autocomplete id="city_country"
+               ng-model="from.address"
+               class="form-control tooltipstered"
+               type="text">
+    </div>
+
+    <div id="mapCanvas"> </div>
+
+
+
+    <div class="form-group geo-search">
+        <label class="col-sm-2 control-label">User Type</label>
+        <div class="col-sm-3">
+            <select class="form-control"  ng-model="fromData.type">
+                <option value="">Select User Type</option>
+                <option value="Merchant">Merchant</option>
+                <option value="Producer">Producer</option>
+                <option value="Service Provider">Service Provider</option>
+                <option value="Registered User">Registered User</option>
+            </select>
+        </div>
+        <label class="col-sm-2 control-label">With In</label>
+        <div class="col-sm-3">
+            <select class="form-control" ng-model="fromData.miles" required>
+                <option value="">Seclect Distance</option>
+                <option value="10">10 miles</option>
+                <option value="50">50 miles</option>
+                <option value="100">100 miles</option>
+                <option value="500">500 miles</option>
+                <option value="1000">1000 miles</option>
+                <option value="5000">5000 miles</option>
+                <option value="10000">10000 miles</option>
+            </select>
+        </div>
+        <div class="col-sm-2 control-label" style="padding:0px 12px;">
+            <button type="submit" ng-disabled="!geographical.$valid" class="btn btn-success" disabled="disabled">Submit</button>
+        </div>
+    </div>
+
+    <div id="infoPanel" style="display: none">
+        <div class="form-group">
+            <label class="control-label">Current position:</label>
+            <div id="info"></div>
+        </div>
+        <div class="form-group">
+            <label class="col-sm-4 control-label">Closest matching address:</label>
+            <div id="address" class="col-sm-6"></div>
+        </div>
+        <input name="lat"  id="lat"
+
+               class="form-control tooltipstered" placeholder="Address"
+               type="text"  >
+        <input name="long"  id="long"
+
+               class="form-control tooltipstered" placeholder="Address"
+               type="text"  >
+        <input name="long"  id="latlong"
+
+               class="form-control tooltipstered" placeholder="Address"
+               type="text"  >
+
+    </div>
+
+
+
+    </form>
+
+</div>
+<div class="userTopProducts">
+    <div class="heading">
+        <div>
+            <h3>Near By Users</h3>
+        </div>
+    </div>
+    <div class="productSec" ng-if="results">
+
+
+        <div class="product" ng-repeat="user in results">
+            <div class="productTitle"><a ui-sref="user-dashboard({userId:user._id})">{{user.name}}</a></div>
+            <div class="category"><strong>{{user.type}}</strong></div>
+
+            <div ng-if="!user.profilePic" class="productPic"><a ui-sref="user-dashboard({userId:user._id})"><img ng-src="front/img/profilePic.png" alt=""></a></div>
+            <div ng-if="user.profilePic" class="productPic"><a ui-sref="user-dashboard({userId:user._id})"><img  ng-src="{{ imageUrl + 'uploads/admin/' + user.profilePic }}" alt=""></a></div>
+
+            <div class="followme">
+                <button ng-show="!user.following" follow class="follow"   usertid="user._id" >+ Follow</button>
+                <button ng-show="user.following" unfollow class="unfollow"    usertid="user._id" >- UnFollow</button>
+
+            </div>
+        </div>
+
+
+
+    </div>
+    <div style="clear: both"></div>
+    <div>
+        <uib-pagination total-items="totalItems" boundary-links="true"
+                        ng-model="currentPage"
+                        ng-change="searchSubmit()" class="pagination-sm"
+                        items-per-page="itemsPerPage"></uib-pagination>
+    </div>
+</div>
+
+
+
+
+
+<style>
+    body > .container {
+        margin-top: 75px;
+        padding: 0;
+    }
+    #mapCanvas {
+        width: 100%;
+        height: 300px;
+        float: left;
+    }
+    #infoPanel {
+        float: left;
+        margin-left: 10px;
+    }
+    #infoPanel div {
+        margin-bottom: 5px;
+    }
+
+
+    #mapCanvas {box-shadow: 1px 1px 3px 3px #D5DEDC; }
+
+    .geo-search {margin: 327px 0px 0px;
+    color:white;}
+
+
+</style>

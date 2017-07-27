@@ -1,0 +1,310 @@
+<style>
+
+
+
+    #navbarDrop1.abc + .dropdown-menu{
+        right:50px;
+        left:inherit;
+
+        width:800px; text-align: left;padding: 11px 10px;
+
+        /* Permalink - use to edit and share this gradient: http://colorzilla.com/gradient-editor/#ffffff+0,eaeaea+100 */
+        background: #ffffff; /* Old browsers */
+        background: -moz-linear-gradient(top,  #ffffff 0%, #eaeaea 100%); /* FF3.6-15 */
+        background: -webkit-linear-gradient(top,  #ffffff 0%,#eaeaea 100%); /* Chrome10-25,Safari5.1-6 */
+        background: linear-gradient(to bottom,  #ffffff 0%,#eaeaea 100%); /* W3C, IE10+, FF16+, Chrome26+, Opera12+, Safari7+ */
+        filter: progid:DXImageTransform.Microsoft.gradient( startColorstr='#ffffff', endColorstr='#eaeaea',GradientType=0 ); /* IE6-9 */
+
+    }
+    #navbarDrop1.abc{
+
+        margin:0 auto;
+
+    }
+
+    #list_line li a {
+        text-align: left;
+        padding: 2px 10px;}
+
+
+    .notifi_number{
+        background: red none repeat scroll 0 0;
+        border-radius: 50%;
+        font-size: 11px;
+        font-weight: bold;
+        height: 17px;
+        line-height: 15px;
+        position: absolute;
+        right: 55px;
+        top: 8px;
+        width: 18px;}
+
+    #navbar form button{
+        color:white;
+        margin-top: -6px;
+        background:#666;
+    }
+
+    #navbar ul li {
+    }
+
+    .navbar-header {margin-top:8px;}
+
+    .notification_list {margin-top:8px;}
+
+
+</style>
+<nav class="navbar navbar-inverse navbar-fixed-top" ng-if="!userLoggedIn">
+    <div class="container">
+        <div class="navbar-header" style="margin-top:10px;">
+            <button type="button" class="navbar-toggle collapsed" data-toggle="collapse" data-target="#navbar" aria-expanded="false" aria-controls="navbar"> <span class="sr-only">Toggle navigation</span> <span class="icon-bar"></span> <span class="icon-bar"></span> <span class="icon-bar"></span> </button>
+            <a  class="navbar-brand" style="" ui-sref="front-dashboard" >
+                <img ng-src="front/img/final_last.png" alt=""}
+                ">
+            </a>
+        </div>
+        <div id="navbar" class="navbar-collapse collapse">
+            <form class="navbar-form navbar-right" name="loginFrom" ng-submit="doLogin()">
+                <div class="form-group">
+                    <input type="text" placeholder="Email" class="form-control"  ng-model="fromData.email" required>
+                </div>
+                <div class="form-group">
+                    <input type="password" placeholder="Password" ng-model="fromData.password" required class="form-control">
+                </div>
+                <button type="submit" ng-disabled="!loginFrom.$valid" style="color:white;margin-top: -6px;" class="btn btn-default">Login</button>
+                <div><a  ui-sref="user-forgot-password" style="color:#FFF;">Having trouble to Login?</a></div>
+            </form>
+        </div>
+        <!--/.navbar-collapse -->
+    </div>
+</nav>
+
+<nav class="navbar navbar-inverse navbar-fixed-top" ng-if="userLoggedIn">
+    <div class="container" ng-init="userProfile()">
+        <div class="navbar-header">
+            <button type="button" class="navbar-toggle collapsed" data-toggle="collapse" data-target="#navbar" aria-expanded="false" aria-controls="navbar"> <span class="sr-only">Toggle navigation</span> <span class="icon-bar"></span> <span class="icon-bar"></span> <span class="icon-bar"></span> </button>
+            <a class="navbar-brand"  ui-sref="front-dashboard">
+                <img ng-src="front/img/final_last.png" alt="" />
+            </a> </div>
+        <div id="navbar" class="navbar-collapse collapse">
+            <ul class="nav navbar-nav pull-right">
+
+                <li class="highlight"><a ui-sref="user-general-timeline"><img  ng-src="front/img/generalTimeline_icon.png" alt="">General Timeline</a></li>
+                <!--<li><a style="cursor: pointer;" ng-click="geographicalsearch()"><img  ng-src="front/img/geographicalSearch_icon.png" alt="">Geographical Search</a></li>-->
+                <li class="highlight"><a ui-sref="geographical-search"><img  ng-src="front/img/geographicalSearch_icon.png" alt="">Geo Search</a></li>
+
+                <li class="highlight"><a ui-sref="product-search"><img  ng-src="front/img/geographicalSearch_icon.png" alt="">Product Search</a></li>
+
+
+                <li class="highlight"><a ui-sref="message-board.compose" ng-init="messageNotificationCount();followingCount()">
+                    <div ng-if="msgNotificationsCount" class="notifi_number">{{msgNotificationsCount}}</div>
+                    <img ng-src="front/img/messageBoard_icon.png" alt="">Message Board</a>
+                </li style="margin-top:8px;">
+                <li class="notification_list" ng-init="messageNotification();followNotification()">
+                    <a href="" class="dropdown-toggle" id="navbarDrop" data-toggle="dropdown" aria-expanded="true">
+                        <div ng-if="msgNotificationsCount || followingsCount" class="notifi_number">{{msgNotificationsCount + followingsCount}}</div>
+                        <img ng-src="front/img/notification_icon.png" alt="">Notification</a>
+
+                    <ul class="dropdown-menu" id="notification">
+                        <span >Notification</span>
+
+                        <li  ng-repeat="msgNotification in msgNotifications">
+                            <a  ui-sref="message-board.details({composeId:msgNotification.from._id,messageId:msgNotification._id,type:'inbox'})">
+                                <img class="notifi_img" ng-src="{{ imageUrl + 'uploads/admin/' + msgNotification.from.profilePic }}"></a>
+                            <h4><a ui-sref="user-dashboard({userId:msgNotification.from._id})" style="font-weight: bolder;font-size: 15px;">{{msgNotification.from.name}} </a> <span>sent you a message</span></h4>
+                            <h5 class="timing">{{msgNotification.created | date :  "MMM d, y h:mm a"}}</h5>
+                        </li>
+
+                        <li  ng-repeat="flwNotification in flwNotifications">
+                            <a ui-sref="user-dashboard({userId:flwNotification.follower._id})">
+                                <img style="margin: 8px 10px;" class="notifi_img" ng-src="{{ imageUrl + 'uploads/admin/' + flwNotification.follower.profilePic }}"></a>
+                            <h4><a ui-sref="user-dashboard({userId:flwNotification.follower._id})" style="font-weight: bolder;font-size: 15px;">{{flwNotification.follower.name}} </a> <span>started following</span></h4>
+                            <h5 class="timing">{{flwNotification.created | date :  "MMM d, y h:mm a"}}</h5>
+                        </li>
+
+
+                    </ul>
+                </li>
+
+
+                <li class="dropdown" id="SearchBox">
+                    <a  class="dropdown-toggle abc" id="navbarDrop1" data-toggle="dropdown" role="button" aria-haspopup="true" aria-expanded="true"><!---<span class="glyphicon glyphicon-search" aria-hidden="true" style="color:white;top:25px;font-size:15px;"></span>---> <img style="margin:5px auto !important;" ng-src="front/img/geographicalSearch_icon.png" alt="" >
+                        Search</a>
+                    <ul class="dropdown-menu searchbar" id="getAllProductListByName" aria-labelledby="navbarDrop1">
+                        <input ng-enter="getAllProductListByName(searchField);" ng-model="searchField" class="ab" type="text" name="search" placeholder="Search.." style="border: 1px solid #eee; font-size: 16px; padding: 3px 5px; width: 100%;">
+                    </ul>
+
+                </li>
+
+
+                <li class="dropdown" >
+
+                    <a ng-href="" class="dropdown-toggle" id="navbarDrop1" data-toggle="dropdown" role="button" aria-haspopup="true" aria-expanded="true">
+                        <img ng-if="!userData.profilePic" ng-src="front/img/profilePicTop.png" alt="">
+                        <img ng-if="userData.profilePic" ng-src="{{ imageUrl + 'uploads/admin/' + userData.profilePic }}" height="30" width="30" alt="">
+                        {{userData.name}}<span class="caret"></span>
+                    </a>
+                    <ul class="dropdown-menu" id="list_line" aria-labelledby="navbarDrop1" style="min-width:125px;">
+                        <li><a ui-sref="front-dashboard">View Profile</a></li>
+                        <li><a ui-sref="user-details.edit-profile">Edit Profile</a></li>
+                        <li><a ui-sref="user-private-timeline">Private Timeline</a></li>
+                        <li> <a  style="cursor: pointer;" ng-click="open()">Change Password</a></li>
+                        <li><a style="cursor: pointer;" ng-click="userLogout()">Logout</a></li>
+                    </ul>
+
+
+                </li>
+
+            </ul>
+
+
+
+
+
+
+
+
+        </div>
+        <!--/.navbar-collapse -->
+    </div>
+
+
+
+    <script type="text/ng-template" id="myModalContent.html">
+        <div class="modal-header">
+            <h3>Change Password!</h3>
+        </div>
+        <form class="form-horizontal ng-pristine ng-invalid ng-invalid-required ng-valid-minlength ng-valid-maxlength ng-valid-pw-check" name="changePasswordFrom" ng-submit="submit(changePasswordFrom.$valid)">
+            <div class="form-group">
+                <label class="col-sm-3 control-label">Current Password</label>
+
+                <div class="col-sm-6">
+                    <input name="current_Password" ng-model="fromData.currentPassword" class="form-control ng-pristine ng-untouched ng-invalid ng-invalid-required" placeholder="Current Password" required="" type="password">
+
+                    <div ng-messages="changePasswordFrom.current_Password.$error" ng-show="changePasswordFrom.current_Password.$invalid &amp;&amp; !changePasswordFrom.current_Password.$pristine" class="ng-active ng-hide">
+                        <!-- ngMessage: required --><div ng-message="required" class="error-class ng-scope">Please Enter  Current Password</div>
+                    </div>
+                </div>
+
+            </div>
+            <div class="form-group">
+                <label class="col-sm-3 control-label">New Password</label>
+
+                <div class="col-sm-6">
+                    <input name="new_Password" ng-model="fromData.newPassword" class="form-control ng-pristine ng-untouched ng-invalid ng-invalid-required ng-valid-minlength ng-valid-maxlength" ng-minlength="6" ng-maxlength="10" placeholder="New Password" required="" type="password">
+                    <div ng-messages="changePasswordFrom.new_Password.$error" ng-show="changePasswordFrom.new_Password.$invalid &amp;&amp; !changePasswordFrom.new_Password.$pristine" class="ng-active ng-hide">
+                        <!-- ngMessage: required --><div ng-message="required" class="error-class ng-scope">Please Enter  New Password</div>
+                    </div>
+
+                </div>
+
+            </div>
+            <div class="form-group">
+                <label class="col-sm-3 control-label">Confirm Password</label>
+
+                <div class="col-sm-6">
+                    <input name="confirm_Password" ng-model="fromData.confirmPassword" class="form-control ng-pristine ng-untouched ng-isolate-scope ng-invalid ng-invalid-required ng-valid-pw-check ng-valid-minlength ng-valid-maxlength" ng-minlength="6" ng-maxlength="10" placeholder="Confirm Password" pw-check="fromData.newPassword" required="" type="password">
+                    <div ng-messages="changePasswordFrom.confirm_Password.$error" ng-show="changePasswordFrom.confirm_Password.$invalid &amp;&amp; !changePasswordFrom.confirm_Password.$pristine" class="ng-active ng-hide">
+                        <!-- ngMessage: required --><div ng-message="required" class="error-class ng-scope">Please Enter  Confirm Password</div>
+                        <!-- ngMessage: minlength -->
+                        <!-- ngMessage: maxlength -->
+                    </div>
+
+                </div>
+
+            </div>
+
+            <div class="form-group">
+                <div class="col-sm-offset-3 col-sm-9">
+                    <button class="btn btn-warning" ng-click="cancel()">Cancel</button>
+                    <button type="submit" ng-disabled="!changePasswordFrom.$valid" class="btn btn-success" disabled="disabled">Submit</button>
+                </div>
+            </div>
+        </form>
+    </script>
+    <script type="text/ng-template" id="geographicalsearch.html">
+
+        <form class="form-horizontal ng-pristine ng-invalid ng-invalid-required ng-valid-minlength ng-valid-maxlength ng-valid-pw-check" name="geographical" ng-submit="submit(geographical.$valid)">
+            <div class="input text">
+                <input name="address" googleplace="" g-places-autocomplete id="city_country"
+                       ng-model="from.address"
+                       class="form-control tooltipstered" placeholder="Address"
+                       type="text"  ></div>
+
+            <div id="mapCanvas"></div>
+
+            <div class="form-group">
+                <label class="col-sm-3 control-label">User Type</label>
+                <div class="col-sm-6">
+                    <select class="form-control"  ng-model="fromData.type" required>
+                        <option value="Merchant">Merchant</option>
+                        <option value="Producer">Producer</option>
+                        <option value="Service Provider">Service Provider</option>
+                        <option value="Registered User">Registered User</option>
+                    </select>
+                </div>
+            </div>
+            <div class="form-group">
+                <label class="col-sm-3 control-label">Search With In</label>
+                <div class="col-sm-6">
+                    <select class="form-control" ng-model="fromData.miles" required>
+                        <option value="10000">1 miles</option>
+                        <option value="500000">5 miles</option>
+                        <option value="100000">10 miles</option>
+                    </select>
+                </div>
+            </div>
+            <div id="infoPanel" style="display: none">
+                <div class="form-group">
+                    <label class="control-label">Current position:</label>
+                    <div id="info"></div>
+                </div>
+                <div class="form-group">
+                    <label class="col-sm-4 control-label">Closest matching address:</label>
+                    <div id="address" class="col-sm-6"></div>
+                </div>
+                <input name="lat"  id="lat"
+
+                       class="form-control tooltipstered" placeholder="Address"
+                       type="text">
+                <input name="long"  id="long"
+
+                       class="form-control tooltipstered" placeholder="Address"
+                       type="text">
+                <input name="long"  id="latlong"
+
+                       class="form-control tooltipstered" placeholder="Address"
+                       type="text">
+
+            </div>
+
+            <div class="form-group">
+                <div class="col-sm-offset-3 col-sm-9">
+                    <button class="btn btn-warning" ng-click="cancel()">Cancel</button>
+                    <button type="submit" ng-disabled="!geographical.$valid" class="btn btn-success" disabled="disabled">Submit</button>
+                </div>
+            </div>
+
+
+        </form>
+    </script>
+
+</nav>
+
+
+<style>
+    #mapCanvas {
+        width: 550px;
+        height: 300px;
+        float: left;
+    }
+    #infoPanel {
+        float: left;
+        margin-left: 10px;
+    }
+    #infoPanel div {
+        margin-bottom: 5px;
+    }
+    #list_line li {padding: 0px 8px;}
+</style>
+

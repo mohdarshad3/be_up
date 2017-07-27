@@ -1,0 +1,72 @@
+
+<!-- Content Wrapper. Contains page content -->
+<div class="content-wrapper" ng-init="adminProfile()">
+    <!-- Content Header (Page header) -->
+    <section class="content-header">
+        <h1>
+            Admin Profile
+        </h1>
+    </section>
+
+    <!-- Main content -->
+    <section class="content">
+
+        <div class="row">
+            <div class="col-md-3">
+
+                <!-- Profile Image -->
+                <div class="box box-primary">
+                    <div class="box-body box-profile">
+                        <img class="profile-user-img img-responsive img-circle" ng-if="!fromData.image" src="../../dist/img/user2-160x160.jpg" alt="User profile picture">
+                        <img class="profile-user-img img-responsive img-circle" ng-if="fromData.image" ng-src="{{ imageUrl + 'uploads/admin/' + fromData.image }}"   />
+                        <h3 class="profile-username text-center">{{fromData.name}}</h3>
+
+                        <p class="text-muted text-center">{{fromData.type}}</p>
+
+                        <ul class="list-group list-group-unbordered">
+
+
+                            <li class="list-group-item">
+                                <b>Phone</b> <a class="pull-right">{{fromData.phone}}</a>
+                            </li>
+                            <li class="list-group-item">
+                                <b>Email</b> <a class="pull-right">{{fromData.email}}</a>
+                            </li>
+
+                        </ul>
+
+
+                    </div>
+                    <!-- /.box-body -->
+                </div>
+                <!-- /.box -->
+
+
+            </div>
+            <!-- /.col -->
+            <div class="col-md-9">
+                <div class="nav-tabs-custom">
+                    <ul class="nav nav-tabs">
+                        <li class="active"><a ui-sref="admin-profile.profile" data-toggle="tab">Profile</a></li>
+                        <li class=""><a ui-sref="admin-profile.change-password"  data-toggle="tab">Change Password</a></li>
+
+                    </ul>
+
+
+                    <div class="tab-content" ui-view="details"></div>
+                        <!-- /.tab-pane -->
+
+                    <!-- /.tab-content -->
+                </div>
+                <!-- /.nav-tabs-custom -->
+            </div>
+            <!-- /.col -->
+        </div>
+        <!-- /.row -->
+
+    </section>
+    <!-- /.content -->
+</div>
+<!-- /.content-wrapper -->
+
+

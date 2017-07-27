@@ -1,0 +1,204 @@
+<div class="" ng-init="getUserProductList();getAllParentCategoryList();userProductList()"">
+
+
+    <div class="userTopProducts" >
+        <img ng-if="!userData.coverPic" src="front/img/profilePageBanner.png"  width="1170" height="333"  alt="">
+        <img ng-if="userData.coverPic" ng-src="{{ imageUrl + 'uploads/admin/' + userData.coverPic }}" width="1170" style="max-height:400px;" alt="">
+
+
+        <div class="heading" >
+            <div>
+
+                <button class="btn btn-default" ui-sref="product-add">Add Product</button>
+
+              <!--  <div class="selection" style="float:none;padding: 4px;">
+
+                    <input autocomplete="off" g-places-autocomplete
+                           ng-model="addressLocation"
+                           type="text" class="search" placeholder="Serach Products By Location">
+                    <input class="search two" type="search"  ng-model="productName"  placeholder="Search By Name">
+                    <button class="btn btn-default" style="margin: 3px 4px;" ng-click="getUserProductList()">Search</button>
+                    <button class="btn btn-default" ui-sref="product-add">Add Product</button>
+
+                    <select ng-model="limit" ng-change="getUserProductList()">
+                        <option value="25">25</option>
+                        <option value="50">50</option>
+                        <option value="100">100</option>
+                    </select>
+
+                    <select ng-model="sort" ng-change="getUserProductList()">
+                        <option value="asc">A-Z</option>
+                        <option value="desc">Z-A</option>
+                    </select>
+
+                </div> -->
+            </div>
+
+
+        </div>
+        <div class="userTopProducts">
+            <div class="heading">
+                <div>
+                    <h3>User Rating</h3>
+                    <div class="ProductAvailability">
+                        <label>Product Availability: </label>
+                        <input type="text" ng-model="search" autocomplete="off" placeholder="Enter Pincode">
+                        <button ng-click="searchProductsByPincode()"  ng-if="search">Search</button>
+                    </div>
+                </div>
+            </div>
+
+
+            <div class="productSec" ng-repeat="checkProduct in checkProducts">
+                <div class="product">
+                    <div class="productTitle"><a target="_blank" href="{{checkProduct.productUrl}}">{{checkProduct.title}}</a></div>
+                    <div class="category"><strong>Category:</strong> {{checkProduct.category.name}} <span ng-if="checkProduct.subCategory"> {{checkProduct.subCategory.name}} </span></div>
+                    <div class="rating">
+                        <ng-rate-it ng-model="rate[checkProduct._id]"   ng-init="rate[checkProduct._id] = checkProduct.rate" ng-click="ratedCallback(checkProduct._id,loginUserId)"></ng-rate-it>
+
+
+                    </div>
+                    <div class="productPic"><a ui-sref="product-detail({productId:checkProduct._id})">
+                        <img ng-if="checkProduct.image" src="{{ imageUrl + 'uploads/admin/' + checkProduct.image }}"  alt="">
+                        <img ng-if="!checkProduct.image" src="{{ imageUrl + 'uploads/admin/product.png'}}" alt="">
+
+                    </a></div>
+                    <div class="price">${{checkProduct.price}} </div>
+                    <div class="img-function">
+                        <span class="glyphicon glyphicon-pencil" ui-sref="product-edit({productId:checkProduct._id})" aria-hidden="true"></span>
+                        <span class="glyphicon glyphicon-trash"  ng-click="deleteProduct(checkProduct._id)" aria-hidden="true"></span>
+                    </div>
+                </div>
+            </div>
+
+
+        </div>
+
+        <div ng-if="checkProducts.length == 0" class="productSec">
+            <div class="alert alert-info">
+                <strong>Info!</strong> No record found.
+            </div>
+
+        </div>
+        <div class="row">
+            <div class="categories col-md-2">
+                <div id="menu">
+                    <details open="">
+                        <summary>Categories </summary>
+
+                        <div class="list_items" ng-repeat="x in categories">
+                            <a ng-click="getUserProductList(x._id)" ><label>{{x.name}}</label></a>
+                        </div>
+
+                    </details>
+
+                </div>
+            </div>
+            <div class="productSec col-md-8">
+                <div class="product acc" ng-repeat="item in results">
+                    <div class="productTitle"><a target="_blank" href="{{item.productUrl}}">{{item.title}}</a></div>
+                    <div class="category"><strong>Category:</strong> {{item.category.name}} <span
+                            ng-if="item.subCategory"> > {{item.subCategory.name}} </span></div>
+                    <div class="rating">
+                        <ng-rate-it ng-model="rate[item._id]" ng-init="rate[item._id] = item.rate"
+                                    ng-click="ratedCallback(item._id,loginUserId)"></ng-rate-it>
+
+
+                    </div>
+            <div class="productPic"><a ui-sref="product-detail({productId:item._id})"></a>
+                        <img ng-if="item.image" ng-src="{{ imageUrl + 'uploads/admin/' + item.image }}"  alt="">
+                        <img ng-if="!item.image" ng-src="{{ imageUrl + 'uploads/admin/product.png'}}" alt="">
+
+                    </div>
+                    <div class="price">${{item.price}}
+
+                        
+                    </div>
+                    <div class="img-func">
+                        <span class="glyphicon glyphicon-pencil" ui-sref="product-edit({productId:item._id})" aria-hidden="true"></span>
+                        
+                        <span class="glyphicon glyphicon-trash"  ng-click="deleteProduct(item._id)" aria-hidden="true"></span>
+                    </div>
+                </div>
+
+
+
+                <div style="clear: both"></div>
+                <div  style="margin-left:50px;">
+                    <uib-pagination total-items="totalItems" boundary-links="true"
+                                    ng-model="currentPage"
+                                    ng-change="getUserProductList()" class="pagination-sm"
+                                    items-per-page="itemsPerPage"></uib-pagination>
+                </div>
+
+                <div ng-if="results.length == 0"  class="productSec col-md-9">
+                    <div class="alert alert-info">
+                        <strong>Info!</strong> No record found.
+                    </div>
+
+                </div>
+
+            </div>
+
+
+            <div class="categories col-md-2">
+                <div id="menu">
+
+
+                    <details>
+                        <summary>Rating<span id="navarrow"></span> </summary>
+                        <div class="list_items">
+                            <ng-rate-it ng-model="rating" ng-click="getUserProductList()"></ng-rate-it>
+                        </div>
+                    </details>
+
+                    <details>
+                        <summary>  Price<span id="navarrow"></span> </summary>
+
+                        <rzslider rz-slider-model="slider.minValue"
+                                  rz-slider-high="slider.maxValue"
+                                  rz-slider-options="slider.options"></rzslider>
+
+                    </details>
+
+                    <details>
+                        <summary>  Limit<span id="navarrow"></span> </summary>
+                        <div>
+                            <select style="padding-right:120px;" ng-model="limit" ng-change="getUserProductList()">
+                                <option value="25">25</option>
+                                <option value="50">50</option>
+                                <option value="100">100</option>
+                            </select>
+                        </div>
+
+                    </details>
+
+                    <details>
+                        <summary>  Sort<span id="navarrow"></span> </summary>
+                        <select style="padding-right:120px;" ng-model="sort" ng-change="getUserProductList()">
+                            <option value="asc">A-Z</option>
+                            <option value="desc">Z-A</option>
+                        </select>
+
+                    </details>
+
+                </div>
+            </div>
+
+
+
+
+        </div>
+    </div>
+</div>
+
+
+<style>
+    body > .container {
+        margin-top: 75px;
+        padding: 0;
+		width:1050px;
+    }
+
+
+</style>

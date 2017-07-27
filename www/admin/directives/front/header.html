@@ -1,0 +1,112 @@
+<nav class="navbar navbar-inverse navbar-fixed-top" ng-if="!userLoggedIn">
+    <div class="container">
+        <div class="navbar-header">
+            <button type="button" class="navbar-toggle collapsed" data-toggle="collapse" data-target="#navbar" aria-expanded="false" aria-controls="navbar"> <span class="sr-only">Toggle navigation</span> <span class="icon-bar"></span> <span class="icon-bar"></span> <span class="icon-bar"></span> </button>
+            <a class="navbar-brand"  ui-sref="front-dashboard"><img src="img/logo.png"></a>
+        </div>
+        <div id="navbar" class="navbar-collapse collapse">
+            <form class="navbar-form navbar-right" name="loginFrom" ng-submit="doLogin()">
+                <div class="form-group">
+                    <input type="text" placeholder="Email" class="form-control"  ng-model="fromData.email" required>
+                </div>
+                <div class="form-group">
+                    <input type="password" placeholder="Password" ng-model="fromData.password" required class="form-control">
+                </div>
+                <button type="submit" ng-disabled="!loginFrom.$valid" class="btn btn-default">Login</button>
+                <div><a  ui-sref="user-forgot-password">Having trouble to Login?</a></div>
+            </form>
+        </div>
+        <!--/.navbar-collapse -->
+    </div>
+</nav>
+
+<nav class="navbar navbar-inverse navbar-fixed-top" ng-if="userLoggedIn">
+    <div class="container">
+        <div class="navbar-header">
+            <button type="button" class="navbar-toggle collapsed" data-toggle="collapse" data-target="#navbar" aria-expanded="false" aria-controls="navbar"> <span class="sr-only">Toggle navigation</span> <span class="icon-bar"></span> <span class="icon-bar"></span> <span class="icon-bar"></span> </button>
+            <a class="navbar-brand"  ui-sref="front-dashboard"><img src="img/logo1.png"></a> </div>
+        <div id="navbar" class="navbar-collapse collapse">
+
+
+            <ul class="nav navbar-nav">
+                <li><a href=""><img src="img/generalTimeline_icon.png" alt="">General Timeline</a></li>
+                <li><a href=""><img src="img/geographicalSearch_icon.png" alt="">Geographical Search</a></li>
+                <li><a href=""><img src="img/messageBoard_icon.png" alt="">Message Board</a></li>
+                <li><a href=""><img src="img/notification_icon.png" alt="">Notification</a></li>
+
+                <li class="dropdown">
+                    <a href="" class="dropdown-toggle" id="navbarDrop1" data-toggle="dropdown" role="button" aria-haspopup="true" aria-expanded="true"><img src="img/profilePicTop.png" alt="">My Profile<span class="caret"></span></a>
+                    <ul class="dropdown-menu" aria-labelledby="navbarDrop1">
+                        <li><a ui-sref="front-dashboard">View Profile</a></li>
+                        <li><a ui-sref="user-private-timeline">Private Timeline</a></li>
+                        <li> <a  ng-click="open()">Change Password</a></li>
+
+                        <li><a ng-click="userLogout()">Logout</a></li>
+                    </ul>
+                </li>
+            </ul>
+        </div>
+        <!--/.navbar-collapse -->
+    </div>
+
+    <script type="text/ng-template" id="myModalContent.html">
+        <div class="modal-header">
+            <h3>Change Password!</h3>
+        </div>
+        <form class="form-horizontal ng-pristine ng-invalid ng-invalid-required ng-valid-minlength ng-valid-maxlength ng-valid-pw-check" name="changePasswordFrom" ng-submit="submit(changePasswordFrom.$valid)">
+            <div class="form-group">
+                <label class="col-sm-3 control-label">Current Password</label>
+
+                <div class="col-sm-6">
+                    <input name="current_Password" ng-model="fromData.currentPassword" class="form-control ng-pristine ng-untouched ng-invalid ng-invalid-required" placeholder="Current Password" required="" type="password">
+
+                    <div ng-messages="changePasswordFrom.current_Password.$error" ng-show="changePasswordFrom.current_Password.$invalid &amp;&amp; !changePasswordFrom.current_Password.$pristine" class="ng-active ng-hide">
+                        <!-- ngMessage: required --><div ng-message="required" class="error-class ng-scope">Please Enter  Current Password</div>
+                    </div>
+                </div>
+
+            </div>
+            <div class="form-group">
+                <label class="col-sm-3 control-label">New Password</label>
+
+                <div class="col-sm-6">
+                    <input name="new_Password" ng-model="fromData.newPassword" class="form-control ng-pristine ng-untouched ng-invalid ng-invalid-required ng-valid-minlength ng-valid-maxlength" ng-minlength="6" ng-maxlength="10" placeholder="New Password" required="" type="password">
+                    <div ng-messages="changePasswordFrom.new_Password.$error" ng-show="changePasswordFrom.new_Password.$invalid &amp;&amp; !changePasswordFrom.new_Password.$pristine" class="ng-active ng-hide">
+                        <!-- ngMessage: required --><div ng-message="required" class="error-class ng-scope">Please Enter  New Password</div>
+                    </div>
+
+                </div>
+
+            </div>
+            <div class="form-group">
+                <label class="col-sm-3 control-label">Confirm Password</label>
+
+                <div class="col-sm-6">
+                    <input name="confirm_Password" ng-model="fromData.confirmPassword" class="form-control ng-pristine ng-untouched ng-isolate-scope ng-invalid ng-invalid-required ng-valid-pw-check ng-valid-minlength ng-valid-maxlength" ng-minlength="6" ng-maxlength="10" placeholder="Confirm Password" pw-check="fromData.newPassword" required="" type="password">
+                    <div ng-messages="changePasswordFrom.confirm_Password.$error" ng-show="changePasswordFrom.confirm_Password.$invalid &amp;&amp; !changePasswordFrom.confirm_Password.$pristine" class="ng-active ng-hide">
+                        <!-- ngMessage: required --><div ng-message="required" class="error-class ng-scope">Please Enter  Confirm Password</div>
+                        <!-- ngMessage: minlength -->
+                        <!-- ngMessage: maxlength -->
+                    </div>
+
+                </div>
+
+            </div>
+
+            <div class="form-group">
+                <div class="col-sm-offset-3 col-sm-9">
+                    <button class="btn btn-warning" ng-click="cancel()">Cancel</button>
+                    <button type="submit" ng-disabled="!changePasswordFrom.$valid" class="btn btn-success" disabled="disabled">Submit</button>
+                </div>
+            </div>
+        </form>
+    </script>
+
+
+    <!--<div class="container">
+        <div class="navbar-header">
+            <button type="button" class="navbar-toggle collapsed" data-toggle="collapse" data-target="#navbar" aria-expanded="false" aria-controls="navbar"> <span class="sr-only">Toggle navigation</span> <span class="icon-bar"></span> <span class="icon-bar"></span> <span class="icon-bar"></span> </button>
+            <a class="navbar-brand" ui-sref="front-dashboard"><img src="img/logo.png"></a> </div>
+
+    </div> -->
+</nav>

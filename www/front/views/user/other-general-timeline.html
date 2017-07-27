@@ -1,0 +1,83 @@
+<div class="col-md-3" ng-init="otherUserProfile()">
+  <div class="privateTimelineProfile">
+      <img ng-if="!userData.profilePic" class="profilePic" ng-src="front/img/profilePic.png" alt="">
+      <img ng-if="userData.profilePic" class="profilePic" ng-src="{{ imageUrl + 'uploads/admin/' + userData.profilePic }}" width="150" height="150" alt="">
+      <div class="name" style="text-align:left;">
+          <img  ng-if="userData.type == 'Merchant'" style="float:left;" ng-src="front/img/merchantBadge.png" alt="">
+          <img  ng-if="userData.type == 'Producer'" style="float:left;" ng-src="front/img/ProducerBadge.png" alt="">
+          <img  ng-if="userData.type == 'Service Provider'" style="float:left;" ng-src="front/img/merchantBadge.png" alt="">
+
+          {{userData.name + ' ' + userData.lastName }}  <br><span style="font-size:14px;">
+           {{userData.type}}</span>
+      </div>
+    <div>{{userData.description}}</div>
+
+  </div>
+
+</div>
+<div class="col-md-9 privateTimeline" ng-init="productsList()" infinite-scroll='reddit.othersGeneralPost()' infinite-scroll-disabled='reddit.busy' infinite-scroll-distance='1'>
+
+    <div class="PostSec" ng-repeat="item in reddit.items">
+        <div class="userSec">
+            <div class="userInfo"><img ng-src="{{ imageUrl + 'uploads/admin/' + item.user.profilePic }}" width="50" height="50" alt=""> <span>
+          <label>{{item.user.name}}  <a  style="float:right"  ui-sref="other-general-timeline({userId:item.originalUser})"  ng-if="!item.original"> &nbsp; shared &nbsp;{{item.originalUserName}}'s post</a></label>
+           <label>{{item.user.email}}</label>
+              <label> {{item.created | date:'MM/dd/yyyy @ h:mma'}}</label>
+          </span> </div>
+            <div class="userType">
+                <img  ng-if="item.user.type == 'Merchant'" ng-src="front/img/merchantBadge.png" alt="">
+                <img  ng-if="item.user.type == 'Producer'"  ng-src="front/img/ProducerBadge.png" alt="">
+                <img  ng-if="item.user.type == 'Service Provider'" ng-src="front/img/merchantBadge.png" alt="">
+
+
+                <span>{{item.user.type}}</span></div>
+        </div>
+        <div class="desc">
+            {{item.post}}
+            <!--  <a href="#" ng-if="item.post">Read Full Story</a> -->
+            <img ng-src="{{ imageUrl + 'uploads/admin/' + item.image }}" alt=""   width="100%" height="auto">
+
+        </div>
+        <div class="actions">
+
+            <a ng-show="!item.likeByMe" like class="like"  liketype="true"  postid="item._id"  style="cursor: pointer"><img ng-src="front/img/like.png" alt="" style="margin: -8px 6px 0px 20px;"><span>{{item.likeCount}}</span>  like </a>
+            <a ng-show="item.likeByMe" unlike class="unlike" liketype="false"   postid="item._id"  style="cursor: pointer"><img ng-src="front/img/unlike.png" alt=""style="margin: -8px 6px 0px 20px;"><span>{{item.likeCount}}</span>   like </a>
+
+            <a ng-click="sharePost(item._id,item.user.name)" style="cursor: pointer"><span>Share</span>    </a>
+
+
+        </div>
+
+        <div class="comment">
+            <!--<form name="myForm" ng-submit="postComment(item._id)">-->
+            <img ng-src="{{ imageUrl + 'uploads/admin/' + userData.profilePic }}">
+
+
+
+            <span><input commenttextbox postid="item._id" image="userData.profilePic" user="userData._id" username="userData.name" class="commentbox" ng-model="comment[item._id]"   type="text" placeholder="Comment....."></span>
+            <!--<button type="submit" style="display:none"></button>-->
+            <!--</form>-->
+
+        </div>
+
+        <div class="comment" ng-repeat="comments in item.comment">
+            <a ui-sref="user-dashboard({userId:comments.user._id})"><img ng-src="{{ imageUrl + 'uploads/admin/' + comments.user.profilePic }}"  width="50" height="50"></a>
+            <a class="name" ui-sref="user-dashboard({userId:comments.user._id})"><span >{{comments.user.name}}</span></a>
+            <span style="font-size:12px;">{{comments.comment}}  </span>
+            <a ng-if="userData._id == comments.user._id" deletecomment  commentid="comments._id">delete</a>
+        </div>
+
+
+    </div>
+    <div ng-show='!reddit.busy'>Loading data...</div>
+
+
+</div>
+</div>
+<style>
+  body > .container {
+    margin-top: 75px;
+    padding: 0;
+    width: 1170px;
+  }
+</style>

@@ -1,0 +1,151 @@
+<div class="content-wrapper" style="min-height: 426px;" ng-init="getAdminList()">
+    <!-- Content Header (Page header) -->
+    <!-- Main content -->
+
+    <section class="content">
+        <div class="row">
+            <div class="col-xs-12">
+                <div class="box">
+                    <div class="box-body">
+                        <div class="box-header with-border ">
+                            <div class="col-sm-10">
+                                <h2 class="box-title"><strong>  Admin List</strong></h2>
+                            </div>
+                            <div class="col-sm-2">
+                                <a ui-sref="admin-add" class="fa fa-plus btn btn-block btn-primary"> Add Admin</a>
+                            </div>
+                        </div>
+
+                        <div class="box-body " style="padding-left: 0px;padding-right: 0px;">
+
+                            <div class="col-sm-10 ">
+
+                            </div>
+                            <div class="col-sm-2 ">
+
+
+                            </div>
+
+
+
+                        </div>
+
+
+
+
+                        <!-- /.box-header -->
+                        <form method="post" accept-charset="utf-8" id="PageViewForm" action="/projects/cakeadmin/appunisonadmin/categoryListing"><div style="display:none;"><input name="_method" value="POST" type="hidden"></div>
+                            <div class="box-body table-responsive no-padding">
+                                <div class="col-sm-12" id="PaggingTr">
+                                    <!-- <div>
+                                         <div infinite-scroll='loadMore()' infinite-scroll-distance='2'>
+                                             <div  ng-repeat="n in numbers">
+                                             <p> {{n}}</p>
+                                             </div>
+                                         </div>
+                                     </div> -->
+
+
+
+
+                                    <table class="table table-bordered table-striped dataTable">
+
+                                        <tbody>
+
+                                        <tr id="Sorting">
+                                            <th> <a> S No.</a>
+                                            </th>
+                                            <th>
+                                                <a> Name</a></th>
+
+                                            <th>
+                                                <a> Email</a>
+                                            </th>
+                                            <th>
+                                                <a> Phone</a></th>
+
+                                            <th>
+                                                <a> Status</a></th>
+                                            <th><a>Action</a></th>
+
+                                        </tr>
+
+
+
+
+                                        <tr  ng-repeat="item in results">
+
+                                            <td> {{itemsPerPage*(currentPage-1) + $index  + 1}} </td>
+                                              <td>  {{item.name}}</td>
+                                              <td>{{item.email}}</td>
+                                              <td>{{item.phone}}</td>
+
+
+
+
+
+
+                                              <td><span ng-if="!item.status" class="label label-danger">In Active</span>
+                                                  <span ng-if="item.status" class="label label-success"> Active</span>
+                                              </td>
+                                              <td>
+                                                  <span><a ng-if="item.status" ng-click="statusChange(item.id,item.status)" class="fa fa-fw fa-check table-status-link custom_link"></a></span>
+                                                  <span><a ng-if="!item.status" ng-click="statusChange(item.id,item.status)" class="fa fa-fw fa-ban table-status-link custom_link"></a></span>
+                                                  <span><a ng-click="delete(item.id)" class="table-delete-link fa fa-fw fa-close" title="Delete User"></a></span>
+                                                  <span><a ui-sref="admin-edit({ id:item._id })" class="fa fa-fw fa-edit"></a></span>
+                                              </td>
+
+
+                                          </tr>
+
+
+
+
+
+
+
+
+
+                                        </tbody></table>
+                                    <uib-pagination total-items="totalItems" boundary-links="true" ng-model="currentPage"
+                                                    ng-change="getAdminList()" class="pagination-sm"
+                                                    items-per-page="itemsPerPage"></uib-pagination>
+
+                                   <!-- <div lazy-scroll="getAdminListt()" lazy-scroll-trigger="30" > -->
+                                        <!--<uib-pagination total-items="totalItems" boundary-links="true" ng-model="currentPage"
+                                                                            ng-change="getAdminList()" class="pagination-sm"
+                                                                            items-per-page="itemsPerPage"></uib-pagination> -->
+                                    </div>
+                                </div>
+
+                                <!-- /.box-body -->
+                        </form>                </div>
+                </div>
+                <!-- /.box -->
+            </div>
+        </div>
+        <!-- /.row -->
+    </section>
+    <!-- /.content -->
+</div>
+
+
+
+
+<!--
+
+<div>
+    <div infinite-scroll='reddit.nextPage()' infinite-scroll-disabled='reddit.busy' infinite-scroll-distance='1'>
+        <div ng-repeat='item in reddit.items'>
+            <span class='score'>{{item.score}}</span>
+      <span class='title'>
+        <a ng-href='{{item.url}}' target='_blank'>{{item.title}}</a>
+      </span>
+            <small>by {{item.author}} -
+                <a ng-href='http://reddit.com{{item.permalink}}' target='_blank'>{{item.num_comments}} comments</a>
+            </small>
+            <div style='clear: both;'></div>
+        </div>
+        <div ng-show='reddit.busy'>Loading data...</div>
+    </div>
+</div> -->
