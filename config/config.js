@@ -9,7 +9,7 @@ module.exports = {
     mongoGrunt: {
         host: '52.87.137.2',
         port: '27017',
-        db: 'socialsite'
+        db: 'Be_Up'
     },
  //   mongoUrl: 'mongodb://appunison:34ft#2!gbsTa45NcXQzaDloI@52.87.137.2:27017/socialsite',
   //  baseUrl: 'http://52.87.137.2:9090/',
@@ -18,7 +18,7 @@ module.exports = {
   //  resetUrl: 'http://52.87.137.2:9090/#/reset-password/',
    // userAccountActivateUrl: 'http://52.87.137.2:9090/#/activate-account/',
   // imageUrl: 'http://52.87.137.2:9090/uploads/admin/',
-    mongoUrl: 'mongodb://localhost:27017/socialsite',
+    mongoUrl: 'mongodb://localhost:27017/Be_Up',
      baseUrl: 'http://localhost:9090/',
      otpConfirmationUrl: 'http://localhost:9090/admin#/otp-confirm/',
      adminBaseUrl: 'http://localhost:9090/admin',
@@ -28,10 +28,10 @@ module.exports = {
 
 
     mailer: {
-        from: process.env.MAILER_FROM || 'Connectosssphere <mkmits@gmail.com>',
+        from: process.env.MAILER_FROM || 'BeUp <mkmits@gmail.com>',
         options: {
            // service: process.env.MAILER_SERVICE_PROVIDER || 'Gmail',
-            host: 'sg2plcpnl0182.prod.sin2.secureserver.net',
+            host: '',
             port: 465,
             debug: true,
             secure: true,
@@ -44,6 +44,7 @@ module.exports = {
     env: 'local',
     superJwtSecretAdmin: 'test@!23',
     superJwtSecretUser: 'test@$#@!23',
+    superJwtSecretTherapist: 'test@$#@!23',
     forgotJwtSecret: 'test@!23',
     expJwtMin: 1440 * 30, // expires in 24hours = (1440),
     forgotExpJwtMin: 2,
@@ -52,6 +53,7 @@ module.exports = {
         Admin: 'admin',
         EmailConfig: 'emailConfig',
         User: 'user',
+        Therapist: 'therapist',
         WebsiteContent: 'websiteContent',
         ProductCategory: 'productCategory',
         Product: 'product',
