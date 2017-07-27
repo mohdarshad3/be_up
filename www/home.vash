@@ -82,6 +82,7 @@
 <script src="scripts/services/messageService.js"></script>
 
 <script src="scripts/services/userService.js"></script>
+<script src="scripts/services/therapistService.js"></script>
 
 
 <!-- daTT Factory -->
@@ -100,7 +101,7 @@
 <script src="scripts/controllers/messageCtrl.js"></script>
 
 
-
+<script src="scripts/controllers/therapistCtrl.js"></script>
 <script src="scripts/controllers/userCtrl.js"></script>
 <script src="scripts/directives/directives.js"></script>
 <script src="scripts/factory/factory.js"></script>
