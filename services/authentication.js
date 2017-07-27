@@ -3,6 +3,7 @@ var jwt = require('jsonwebtoken'),
         jwtConfig = require('../config/config'),
         Admin = require('../models/admin'),
         User = require('../models/user'),
+        Therapist = require('../models/therapist'),
         mailer = require('../utilities/mailerService'),
         _ = require('lodash');
 
@@ -12,6 +13,28 @@ exports.authUserChecker = function (req, res, next) {
         var token = req.headers.authorization || req.body.token || req.query.token || req.headers['x-access-token'];
         try {
             jwt.verify(token, jwtConfig.superJwtSecretUser, function (err, decoded) {
+                if (err) {
+                    //  logger.stream.write({error: err});
+                    return res.status(err.status || 401).json({code: err.status || 401, message: 'Failed to authenticate token.',data:'expired'});
+                }
+                req.decoded = decoded;
+                req.decoded.token = token;
+                next();
+            });
+        } catch (e) {
+            //  logger.stream.write({error: e});
+            return res.status(401).json({code: 401, message: 'Invalid token'});
+        }
+    } else {
+        return res.status(401).json({code: 401, message: 'Invalid tokennn'});
+    }
+};
+exports.authTherapistChecker = function (req, res, next) {
+
+    if (req.headers) {
+        var token = req.headers.authorization || req.body.token || req.query.token || req.headers['x-access-token'];
+        try {
+            jwt.verify(token, jwtConfig.superJwtSecretTherapist, function (err, decoded) {
                 if (err) {
                     //  logger.stream.write({error: err});
                     return res.status(err.status || 401).json({code: err.status || 401, message: 'Failed to authenticate token.',data:'expired'});
@@ -61,6 +84,16 @@ exports.createUserToken = function (user, callback) {
     });
     return callback(null, token);
 };
+exports.createTherapistToken = function (therapist, callback) {
+    var token = jwt.sign({
+        email: therapist.email,
+        name: therapist.name,
+        id: therapist._id,
+    }, jwtConfig.superJwtSecretTherapist, {
+        expiresIn: jwtConfig.expJwtMin
+    });
+    return callback(null, token);
+};
 
 
 exports.createAdminToken = function (user, callback) {
@@ -74,7 +107,17 @@ exports.createAdminToken = function (user, callback) {
     });
     return callback(null, token);
 };
-
+exports.createAdminToken = function (therapist, callback) {
+    var token = jwt.sign({
+        email: therapist.email,
+        name: therapist.name,
+        id: therapist._id,
+        role:therapist.role
+    }, jwtConfig.superJwtSecretAdmin, {
+        expiresIn: jwtConfig.expJwtMin
+    });
+    return callback(null, token);
+};
 
 exports.forgotPassword = function(req, res, callback) {
 
@@ -124,11 +167,6 @@ exports.forgotPassword = function(req, res, callback) {
 
 }
 
-
-
-
-
-
 exports.frontForgotPassword = function(req, res, callback) {
 
     User.findOne({email: req.body.email,deleted:0}, function(err, user) {
@@ -162,20 +200,17 @@ exports.frontForgotPassword = function(req, res, callback) {
 
 }
 
-
-exports.createTokenUser = function (user, callback) {
+exports.createTokenTherapist = function (therapist, callback) {
     var token = jwt.sign({
-        email: user.email,
-        name: user.name,
-        id: user._id,
-        role:user.role
-    }, jwtConfig.superJwtSecretUser, {
+        email: therapist.email,
+        name: therapist.name,
+        id: therapist._id,
+        role:therapist.role
+    }, jwtConfig.superJwtSecretTherapist, {
         expiresIn: jwtConfig.expJwtMin
     });
     return callback(null, token);
 };
-
-
 
 var createTokenForgotPassword = function (user, callback) {
 
@@ -185,8 +220,6 @@ var createTokenForgotPassword = function (user, callback) {
             {expiresIn: jwtConfig.forgotExpJwtMin});
     return callback(null, token);
 };
-
-
 
 exports.createTokenForgotPassword = createTokenForgotPassword;
 
