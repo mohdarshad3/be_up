@@ -50,11 +50,6 @@ angular.module('Admin').config(function ($stateProvider, $urlRouterProvider, $lo
         templateUrl: 'views/user/list.html',
         controller: 'userCtrl',
         data: {authenticatedRoute: true}
-    }).state('therapist-list', {
-        url: '/therapist-list',
-        templateUrl: 'views/therapist/list.html',
-        controller: 'userCtrl',
-        data: {authenticatedRoute: true}
     }).state('user-add', {
         url: '/user-add',
         templateUrl: 'views/user/add.html',
@@ -70,6 +65,22 @@ angular.module('Admin').config(function ($stateProvider, $urlRouterProvider, $lo
         templateUrl: 'views/admin/forgot-password.html',
         controller: 'authCtrl',
         data: {freeRoute: true}
+    }).state('therapist-add', {
+        url: '/therapist-add',
+        templateUrl: 'views/therapist/add.html',
+        controller: 'therapistCtrl',
+        data: {authenticatedRoute: true}
+    }).state('therapist-edit', {
+        url: '/therapist-edit',
+        templateUrl: 'views/therapist/edit.html',
+        controller: 'therapistCtrl',
+        data: {authenticatedRoute: true}
+    }).state('therapist-list', {
+        url: '/therapist-list',
+        templateUrl: 'views/therapist/list.html',
+        controller: 'therapistCtrl',
+        data: {authenticatedRoute: true}
+
     }).state('product-category-list', {
         url: '/product-category-list',
         templateUrl: 'views/category/list.html',
