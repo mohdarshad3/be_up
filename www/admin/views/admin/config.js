@@ -9,15 +9,15 @@ module.exports = {
     mongoGrunt: {
         host: 'localhost',
         port: '27017',
-        db: 'socialsite'
+        db: 'Be_Up'
     },
-    mongoUrl: 'mongodb://localhost:27017/socialsite',
+    mongoUrl: 'mongodb://localhost:27017/Be_Up',
     baseUrl: 'http://localhost:9090/',
     otpConfirmationUrl: 'http://52.87.137.2:9090/#/otp-confirm/',
 
 
     mailer: {
-        from: process.env.MAILER_FROM || 'Sunny Friday <ankit@appunison.com>',
+        from: process.env.MAILER_FROM || 'BeUp <ankit@appunison.com>',
         options: {
            // service: process.env.MAILER_SERVICE_PROVIDER || 'Gmail',
             host: 'sg2plcpnl0256.prod.sin2.secureserver.net',
