@@ -21,6 +21,7 @@ angular.module('Admin').controller('mainCtrl', function ($scope, $rootScope, $lo
   $scope.signInSuccessful = function () {
     $scope.adminLoggedIn = true;
     $scope.loginUserName = $localStorage.loginUserName;
+    $scope.loginTherapistName = $localStorage.loginTherapistName;
     $scope.role = $localStorage.role;
     $scope.profilePic = $localStorage.image;
 

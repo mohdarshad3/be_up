@@ -22,6 +22,7 @@ angular.module('Admin').factory('httpInterceptor', function ($q, $location, $loc
       if (rejection.status === 401  || rejection.status === 403) {
         delete $localStorage.token;
         delete $localStorage.loginUserName;
+        delete $localStorage.loginTherapistName;
         delete $localStorage.role;
         delete $localStorage.image;
         $location.path('/login');

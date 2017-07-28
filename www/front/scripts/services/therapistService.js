@@ -1,4 +1,4 @@
-angular.module('Admin').service('therapistService', function ($http, $q, $localStorage,CONFIG,Upload) {
+angular.module('Front').service('userService', function ($http, $q, $localStorage, CONFIG, Upload) {
     return {
         addTherapist: function (data, callback) {
             $http({
@@ -44,6 +44,7 @@ angular.module('Admin').service('therapistService', function ($http, $q, $localS
             });
         },
 
+
         editTherapist: function (id, callback) {
             $http({
                 method: 'GET',
@@ -58,7 +59,7 @@ angular.module('Admin').service('therapistService', function ($http, $q, $localS
             $http({
                 method: 'POST',
                 url: CONFIG.baseUrl + 'therapist/update',
-                data: data  //pass file as data, should be therapist ng-model
+                data: data  //pass file as data, should be Therapist ng-model
             }).success(function (result) {
                 //upload function returns a promise
                 callback(null, result);
@@ -76,6 +77,28 @@ angular.module('Admin').service('therapistService', function ($http, $q, $localS
                 callback(true, err);
             });
         },
+       /* rateProduct: function (productId, rate, userId, callback) {
+            $http({
+                method: 'GET',
+                url: CONFIG.baseUrl + 'user/rateProduct/' + productId + '/' + rate + '/' + userId
+            }).success(function (result) {
+                callback(null, result);
+            }).error(function (err) {
+                callback(true, err);
+            });
+        },
+        getProductRating: function (productId,  callback) {
+            $http({
+                method: 'GET',
+                url: CONFIG.baseUrl + 'user/getProductRating/' + productId
+            }).success(function (result) {
+                callback(null, result);
+            }).error(function (err) {
+                callback(true, err);
+            });
+        },*/
+
+
         deleteTherapist: function (id, callback) {
             $http({
                 method: 'GET',
@@ -86,6 +109,7 @@ angular.module('Admin').service('therapistService', function ($http, $q, $localS
                 callback(true, err);
             });
         },
+
         addTherapistCoverPic: function (data, callback) {
             Upload.upload({
                 method: 'POST',
@@ -95,6 +119,24 @@ angular.module('Admin').service('therapistService', function ($http, $q, $localS
                 callback(null, result);
             }, function (err) {
                 callback(true, err.data);
+            });
+        },
+
+        TherapistCountry: function (lat, lng, callback) {
+
+            var latlng = new google.maps.LatLng(lat, lng);
+            var geocoder = geocoder = new google.maps.Geocoder();
+            geocoder.geocode({ 'latLng': latlng }, function (results, status) {
+                if (status == google.maps.GeocoderStatus.OK) {
+                    if (results[0]) {
+                        callback(null, results[0].address_components[6].short_name);
+
+                    }else{
+                        callback(null, {});
+                    }
+                }else{
+                    callback(null, {});
+                }
             });
         },
         addTherapistProfilePic: function (data, callback) {
@@ -108,7 +150,16 @@ angular.module('Admin').service('therapistService', function ($http, $q, $localS
                 callback(true, err.data);
             });
         },
-
+       /* deleteTherapist: function (id, callback) {
+            $http({
+                method: 'GET',
+                url: CONFIG.baseUrl + 'therapist/' + id + '/delete'
+            }).success(function (result) {
+                callback(null, result);
+            }).error(function (err) {
+                callback(true, err);
+            });
+        },*/
 
 
 

@@ -12,6 +12,7 @@ exports.authUserChecker = function (req, res, next) {
     if (req.headers) {
         var token = req.headers.authorization || req.body.token || req.query.token || req.headers['x-access-token'];
         try {
+        } catch (e) {
             jwt.verify(token, jwtConfig.superJwtSecretUser, function (err, decoded) {
                 if (err) {
                     //  logger.stream.write({error: err});
@@ -21,7 +22,6 @@ exports.authUserChecker = function (req, res, next) {
                 req.decoded.token = token;
                 next();
             });
-        } catch (e) {
             //  logger.stream.write({error: e});
             return res.status(401).json({code: 401, message: 'Invalid token'});
         }
@@ -107,12 +107,12 @@ exports.createAdminToken = function (user, callback) {
     });
     return callback(null, token);
 };
-exports.createAdminToken = function (therapist, callback) {
+exports.createAdminToken = function (user, callback) {
     var token = jwt.sign({
-        email: therapist.email,
-        name: therapist.name,
-        id: therapist._id,
-        role:therapist.role
+        email: user.email,
+        name: user.name,
+        id: user._id,
+        role:user.role
     }, jwtConfig.superJwtSecretAdmin, {
         expiresIn: jwtConfig.expJwtMin
     });
@@ -199,6 +199,17 @@ exports.frontForgotPassword = function(req, res, callback) {
     });
 
 }
+exports.createTokenUser = function (user, callback) {
+    var token = jwt.sign({
+        email: user.email,
+        name: user.name,
+        id: user._id,
+        role:user.role
+    }, jwtConfig.superJwtSecretTherapist, {
+        expiresIn: jwtConfig.expJwtMin
+    });
+    return callback(null, token);
+};
 
 exports.createTokenTherapist = function (therapist, callback) {
     var token = jwt.sign({

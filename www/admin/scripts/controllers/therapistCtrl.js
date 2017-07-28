@@ -6,17 +6,18 @@ angular.module('Admin').controller('therapistCtrl', function ($scope,$modal, $ro
     $scope.fromData = {};
     $scope.Data = {};
     $scope.user = {};
+    $scope.therapist = {};
     var selectedCheckbox = [];
     $scope.results = {};
     $scope.currentPage = 1;
     $scope.appName = CONFIG.appName;
     $scope.userType = CONFIG.userType;
     $scope.adminLoggedIn = false;
-    $scope.loginUserName = $localStorage.loginUserName;
+    $scope.loginTherapistName = $localStorage.loginTherapistName;
     $scope.role = $localStorage.role;
     $scope.profilePic = $localStorage.image;
     $scope.imageUrl = CONFIG.imageUrl;
-    $scope.userData = {};
+    $scope.therapistData = {};
 
 
 
@@ -48,13 +49,13 @@ angular.module('Admin').controller('therapistCtrl', function ($scope,$modal, $ro
             toastr.error('Invalid Form Data', 'Error');
             return false;
         }
-        if($scope.fromData.address.geometry != undefined) {
+        /*if($scope.fromData.address.geometry != undefined) {
             $scope.fromData.location = $scope.fromData.address.geometry.location;
             $scope.fromData.country = $scope.fromData.address;
             $scope.fromData.address = $scope.fromData.address.formatted_address;
 
 
-        }
+        }*/
 
 
         therapistService.addTherapist($scope.fromData, function (err, data) {
@@ -77,6 +78,126 @@ angular.module('Admin').controller('therapistCtrl', function ($scope,$modal, $ro
                 toastr.error(data.message, 'Error');
             }
         });
+    };
+
+    $scope.editTherapist = function () {
+
+
+
+        $scope.id = $stateParams.id ? $stateParams.id : null;
+        therapistService.editTherapist($scope.id, function (err, result) {
+            if (!err) {
+                $scope.fromData = result.data;
+                //  $scope.fromData.oldImage = result.data.image;
+            } else {
+                toastr.error(result.message, 'Error');
+            }
+        });
+    };
+
+
+
+    $scope.updateTherapist = function (valid) {
+        if (!valid) {
+            toastr.error('Invalid Form Data', 'Error');
+            return false;
+        }
+
+        if($scope.fromData.address.geometry != undefined) {
+            $scope.fromData.location = $scope.fromData.address.geometry.location;
+            $scope.fromData.country = $scope.fromData.address.address_components;
+            $scope.fromData.address = $scope.fromData.address.formatted_address;
+
+
+        }
+        therapistService.updateTherapist($scope.fromData, function (err, data) {
+            if (!err) {
+                toastr.success('Admin updated Successfully', 'Success');
+                $state.go('therapist-list');
+            } else {
+                toastr.error(data.message, 'Error');
+            }
+        });
+    };
+
+
+    $scope.doLogin = function () {
+        dataService.therapistLogin($scope.fromData, function (err, data) {
+            if (!err) {
+                toastr.success('Therapist logged in Successfully', 'Success');
+                $rootScope.$broadcast(AUTH_EVENTS.loginSuccess);
+                $state.go('front-dashboard');
+            } else {
+                toastr.error(data.message, 'Error');
+                $state.go('front-login');
+            }
+        });
+    };
+
+    $scope.frontTherapistSignUp = function (valid) {
+        if (!valid) {
+            toastr.error('Invalid Form Data', 'Error');
+            return false;
+        }
+        therapistService.frontTherapistSignUp($scope.fromData, function (err, data) {
+            if (!err) {
+                toastr.success('Follow instructions in email to activate your account', 'Success');
+                $state.go('front-login');
+            } else {
+                toastr.error(data.message, 'Error');
+            }
+        });
+    };
+    $scope.doOtpConfirmation = function () {
+        if($stateParams.userId == undefined){
+            toastr.error('Invalid Credentials', 'Error');
+        }else {
+            $scope.fromData._id = $stateParams.userId;
+            dataService.otpConfirmation($scope.fromData, function (err, data) {
+                if (!err) {
+                    toastr.success(data.message, 'Success');
+                    $state.go('admin-login');
+                } else {
+                    toastr.error(data.message, 'Error');
+                }
+            });
+        }
+    };
+
+    $scope.statusChange = function (id, status) {
+        $confirm({text: 'Are you sure you want to change status?'}).then(function () {
+            therapistService.changeStatusTherapist(id, status, function (err, data) {
+                if (!err) {
+                    toastr.success('Therapist status has been changes Successfully', 'Success');
+                    $scope.getTherapistList();
+                } else {
+                    toastr.error(data.message, 'Error');
+                }
+            });
+        });
+    };
+
+
+
+    $scope.delete = function (id) {
+        $confirm({text: 'Are you sure you want to delete?'}).then(function () {
+            therapistService.deleteTherapist(id, function (err, data) {
+                if (!err) {
+                    toastr.success('Therapist has been deleted Successfully', 'Success');
+                    $scope.getTherapistList();
+                } else {
+                    toastr.error(data.message, 'Error');
+                }
+            });
+        });
+    };
+
+
+    $scope.logout = function () {
+        dataService.logout();
+        $scope.adminLoggedIn = false;
+        $state.go('front-login');
+
     };
 
 

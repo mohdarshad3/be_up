@@ -99,8 +99,6 @@
 <script src="scripts/controllers/productCategoryCtrl.js"></script>
 <script src="scripts/controllers/postCtrl.js"></script>
 <script src="scripts/controllers/messageCtrl.js"></script>
-
-
 <script src="scripts/controllers/therapistCtrl.js"></script>
 <script src="scripts/controllers/userCtrl.js"></script>
 <script src="scripts/directives/directives.js"></script>

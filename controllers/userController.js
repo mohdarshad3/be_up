@@ -241,7 +241,7 @@ userController.init = function (app, passport) {
     });
 
 
-    app.get('/otherUser/profile/:userId', authorizationUser, function (req, res) {
+   /* app.get('/otherUser/profile/:userId', authorizationUser, function (req, res) {
 
         var userId = req.params.userId;
         dataService.getSingleRecord(config.models.User, userId, function (status, err, user) {
@@ -653,7 +653,7 @@ userController.init = function (app, passport) {
                 res.status(200).json(resultData);
             }
         })
-    });
+    });*/
 
     /*  app.get('/user/getFollowingList',authorizationUser, function (req, res) {
 
@@ -669,7 +669,7 @@ userController.init = function (app, passport) {
 
      }); */
 
-    app.get('/user/getFollowingList/:page', authorizationUser, function (req, res) {
+   /* app.get('/user/getFollowingList/:page', authorizationUser, function (req, res) {
 
         var userId = req.decoded.id;
 
@@ -689,7 +689,7 @@ userController.init = function (app, passport) {
                 res.status(200).json(data);
             }
         })
-    });
+    });*/
 
    /* app.get('/user/getUserFollowingList/:page/:userId', authorizationUser, function (req, res) {
 
@@ -714,7 +714,7 @@ userController.init = function (app, passport) {
     }); */
 
 
-    app.get('/user/getFollowingCount', authorizationUser, function (req, res) {
+ /*   app.get('/user/getFollowingCount', authorizationUser, function (req, res) {
 
         var userId = req.decoded.id;
         var following = require('../models/following');
@@ -1331,5 +1331,5 @@ userController.init = function (app, passport) {
         });
 
 
-    });
+    });*/
 };

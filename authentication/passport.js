@@ -3,7 +3,9 @@
 var LocalStrategy = require('passport-local').Strategy;
 
 var Admin = require('../models/admin');
+var Therapist = require('../models/therapist');
 var User = require('../models/user'),
+
     config = require('../config/config');
 // expose this function to our app using module.exports
 module.exports = function (passport) {
@@ -117,13 +119,69 @@ module.exports = function (passport) {
         }));
 
 
+
+    // =========================================================================
+    // LOCAL FRONT SIGNUP ============================================================
+    // =========================================================================
+    // we are using named strategies since we have one for login and one for signup
+    // by default, if there was no name, it would just be called 'local'
+
+    passport.use('local-front-therapist-signup', new LocalStrategy({
+            // by default, local strategy uses username and password, we will override with email
+            usernameField: 'email',
+            passwordField: 'password',
+            passReqToCallback: true // allows us to pass back the entire request to the callback
+        },
+        function (req, email, password, done) {
+            // asynchronous
+            // User.findOne wont fire unless data is sent back
+            process.nextTick(function () {
+
+                // find a user whose email is the same as the forms email
+                // we are checking to see if the user trying to login already exists
+                Therapist.findOne({'email': email,deleted:0}, function (err, therapist) {
+                    // if there are any errors, return the error
+                    if (err)
+                        return done(err);
+
+                    // check to see if theres already a user with that email
+                    if (therapist) {
+                        return done(null, false, {message:'That email is already taken.'});
+                    } else {
+
+                        // if there is no user with that email
+                        // create the user
+                        var newTherapist = new Therapist();
+                        // set the user's local credentials
+
+                        var otp          = Math.floor(100000 + Math.random() * 900000);
+                        newTherapist.email = email;
+                        newTherapist.name = (req.body.name) ? req.body.name : '';
+                        newTherapist.status = '0';
+                        newTherapist.type = (req.body.type) ? req.body.type : '';
+
+
+
+                        newTherapist.password = newTherapist.generateHash(password);
+                        // save the user
+                        saveTherapist(newTherapist, done);
+                    }
+
+                });
+
+            });
+
+        }));
+
+
+
     // =========================================================================
     // LOCAL USER SIGNUP ============================================================
     // =========================================================================
     // we are using named strategies since we have one for login and one for signup
     // by default, if there was no name, it would just be called 'local'
 
-    passport.use('local-user-login', new LocalStrategy({
+       passport.use('local-user-login', new LocalStrategy({
             // by default, local strategy uses username and password, we will override with email
             usernameField: 'email',
             passwordField: 'password',
@@ -150,6 +208,40 @@ module.exports = function (passport) {
                     return done(null, false, {message:'Oops! Wrong password.'}); // create the loginMessage and save it to session as flashdata
                 // all is well, return successful user
                 return done(null, user);
+            });
+
+        }));
+
+
+
+
+    passport.use('local-therapist-login', new LocalStrategy({
+            // by default, local strategy uses username and password, we will override with email
+            usernameField: 'email',
+            passwordField: 'password',
+            passReqToCallback: true // allows us to pass back the entire request to the callback
+        },
+        function (req, email, password, done) { // callback with email and password from our form
+
+            // find a user whose email is the same as the forms email
+            // we are checking to see if the user trying to login already exists
+            Therapist.findOne({'email': email,status:1,deleted:0}, function (err, therapist) {
+                // if there are any errors, return the error before anything else
+                console.log(err);
+                console.log(therapist);
+                if (err)
+                    return done(err);
+
+                // if no user is found, return the message
+                if (!therapist)
+                    return done(null, false, {message:'Email not exists in our system or therapist dactivate from the system.'}); // req.flash is the way to set flashdata using connect-flash
+                //console.log(user);
+                // if the user is found but the password is wrong
+
+                if (!therapist.validPassword(password))
+                    return done(null, false, {message:'Oops! Wrong password.'}); // create the loginMessage and save it to session as flashdata
+                // all is well, return successful therapist
+                return done(null, therapist);
             });
 
         }));
@@ -257,6 +349,71 @@ module.exports = function (passport) {
             if (err)
                 throw err;
             return done(null, user);
+        });
+    }
+
+
+
+
+    passport.use('local-therapist-addtherapist', new LocalStrategy({
+            // by default, local strategy uses username and password, we will override with email
+            usernameField: 'email',
+            passwordField: 'password',
+            passReqToCallback: true // allows us to pass back the entire request to the callback
+        },
+
+        function (req, email, password, done) {
+            // asynchronous
+            // Therapist.findOne wont fire unless data is sent back
+            process.nextTick(function () {
+
+                // find a user whose email is the same as the forms email
+                // we are checking to see if the user trying to login already exists
+                Therapist.findOne({'email': email,deleted:0}, function (err, therapist) {
+                    // if there are any errors, return the error
+                    if (err)
+                        return done(err);
+
+                    // check to see if theres already a user with that email
+                    if (therapist) {
+                        return done(null, false, {message:'That email is already taken.'});
+                    } else {
+
+                        // if there is no user with that email
+                        // create the user
+                        var location = [];
+                        var newTherapist = new Therapist();
+                        // set the user's local credentials
+                        newTherapist.email = email;
+                        newTherapist.name = (req.body.name) ? req.body.name : '';
+                        newTherapist.lastName = (req.body.lastName) ? req.body.lastName : '';
+                        newTherapist.dob = (req.body.dob) ? req.body.dob : '';
+                        newTherapist.company = (req.body.company) ? req.body.company : '';
+                        newTherapist.address = (req.body.address) ? req.body.address : '';
+                        newTherapist.location[0] = req.body.location;
+                        newTherapist.location[1] = req.body.location;
+                        newTherapist.type = (req.body.type) ? req.body.type : '';
+                        newTherapist.country = (req.body.country) ? req.body.country : '';
+                        console.log(newTherapist);
+
+
+
+                        newTherapist.password = newTherapist.generateHash(password);
+                        // save the user
+                        saveTherapist(newTherapist, done);
+                    }
+
+                });
+
+            });
+
+        }));
+
+    function saveTherapist(therapist, done) {
+        therapist.save(function (err) {
+            if (err)
+                throw err;
+            return done(null, therapist);
         });
     }
 };

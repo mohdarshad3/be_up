@@ -50,7 +50,7 @@ therapistController.init = function (app, passport) {
                     console.log('responseStatus');
                     console.log(responseStatus);
 
-                    authService.createTokenUser(therapist, function (err, token) {
+                    authService.createTokenTherapist(therapist, function (err, token) {
                         if (!err)
                             res.status(200).json({token: token, message: null});
                     });

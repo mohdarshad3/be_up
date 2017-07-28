@@ -13,6 +13,19 @@ angular.module('Admin').service('dataService', function ($http, $q, $localStorag
         callback(true, err);
       });
     },
+
+    therapistSignUp: function (data, callback) {
+      $http({
+        method: 'POST',
+        url: CONFIG.baseUrl + 'admin/therapistSignUp',
+        data: data
+      }).success(function (result) {
+        callback(null, result);
+      }).error(function (err) {
+        callback(true, err);
+      });
+    },
+
     usersCount: function (callback) {
       $http({
         method: 'get',
@@ -51,6 +64,7 @@ angular.module('Admin').service('dataService', function ($http, $q, $localStorag
       }).success(function (result) {
         $localStorage.token = result.token;
         $localStorage.loginUserName = result.name;
+        $localStorage.loginTherapistName = result.name;
         $localStorage.role = result.role;
         $localStorage.image = result.image;
         callback(null, result);
@@ -73,6 +87,23 @@ angular.module('Admin').service('dataService', function ($http, $q, $localStorag
         callback(true, err);
       });
     },
+
+    therapistLogin: function (data, callback) {
+      $http({
+        method: 'POST',
+        url: CONFIG.baseUrl + 'therapist/login',
+        data: data
+      }).success(function (result) {
+        $localStorage.token = result.token;
+        $localStorage.loginTherapistName = result.name;
+        $localStorage.role = result.role;
+        $localStorage.image = result.image;
+        callback(null, result);
+      }).error(function (err) {
+        callback(true, err);
+      });
+    },
+
     otpConfirmation: function (data, callback) {
       $http({
         method: 'POST',
@@ -84,6 +115,30 @@ angular.module('Admin').service('dataService', function ($http, $q, $localStorag
         callback(true, err);
       });
     },
+    doResetPassword: function (data, callback) {
+      $http({
+        method: 'POST',
+        url: CONFIG.baseUrl + 'therapist/resetPassword',
+        data: data
+      }).success(function (result) {
+        callback(null, result);
+      }).error(function (err) {
+        callback(true, err);
+      });
+    },
+
+    doResetPassword: function (data, callback) {
+      $http({
+        method: 'POST',
+        url: CONFIG.baseUrl + 'therapist/resetPassword',
+        data: data
+      }).success(function (result) {
+        callback(null, result);
+      }).error(function (err) {
+        callback(true, err);
+      });
+    },
+
     doResetPassword: function (data, callback) {
       $http({
         method: 'POST',
@@ -109,6 +164,22 @@ angular.module('Admin').service('dataService', function ($http, $q, $localStorag
         callback(true, err);
       });
     },
+
+    activateAccount: function (activateId, callback) {
+      $http({
+        method: 'GET',
+        url: CONFIG.baseUrl + 'therapist/activateAccount/' + activateId
+      }).success(function (result) {
+        $localStorage.token = result.token;
+        $localStorage.loginTherapistName = result.name;
+        $localStorage.role = result.role;
+        $localStorage.image = result.image;
+        callback(null, result);
+      }).error(function (err) {
+        callback(true, err);
+      });
+    },
+
      alexaAuthlogin: function (data, callback) {
       $http({
         method: 'POST',
@@ -156,6 +227,18 @@ angular.module('Admin').service('dataService', function ($http, $q, $localStorag
       });
     },
 
+    frontForgotPassword: function (formData, callback) {
+      $http({
+        method: 'POST',
+        url: CONFIG.baseUrl + 'therapist/forgotPassword',
+        data: formData
+      }).success(function (result) {
+        callback(null, result);
+      }).error(function (err) {
+        callback(err);
+      });
+    },
+
     verifyToken: function (token, callback) {
       $http({
         method: 'get',
@@ -188,6 +271,19 @@ angular.module('Admin').service('dataService', function ($http, $q, $localStorag
         callback(err);
       });
     },
+
+    therapistChangePassword: function (formData, callback) {
+      $http({
+        method: 'POST',
+        url: CONFIG.baseUrl + 'admin/therapistChangePassword',
+        data: formData
+      }).then(function successCallback(result) {
+        callback(null, result);
+      }, function errorCallback(err) {
+        callback(err);
+      });
+    },
+
     userFollowers: function (userId, callback) {
       $http({
         method: 'GET',

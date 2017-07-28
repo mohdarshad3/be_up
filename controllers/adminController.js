@@ -1,12 +1,14 @@
 'use strict';
 var dataService = require('../services/dataService'),
     authorizationUser = require('../services/authentication').authUserChecker,
+    authorizationTherapist = require('../services/authentication').authTherapistChecker,
     authorizationAdmin = require('../services/authentication').authAdminChecker,
     authService = require('../services/authentication'),
     config = require('../config/config.js'),
     adminService = require('../services/adminService'),
     product = require('../models/product'),
     user = require('../models/user'),
+    therapist = require('../models/therapist'),
     async = require('async'),
     __ = require('lodash');
 
@@ -50,7 +52,7 @@ adminController.init = function (app) {
         })
     });
 
-    app.get('/admin/getProductList_bkp/:page', authorizationUser, function (req, res) {
+   /* app.get('/admin/getProductList_bkp/:page', authorizationUser, function (req, res) {
 
         var userId = req.decoded.id;
 
@@ -813,7 +815,7 @@ adminController.init = function (app) {
                 res.status(200).json(data.docs);
             }
         })
-    });
+    });*/
 
     app.post('/admin/changePassword', authorizationAdmin, function (req, res) {
         var email = req.decoded.email;

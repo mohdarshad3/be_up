@@ -13,7 +13,7 @@ angular.module('myApp.constants', []).constant('CONFIG', {
   ],
   userType:[
     {type: 'Customer'},
-    {type: 'Therapist'}
+    
 
   ]
 

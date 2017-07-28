@@ -49,6 +49,25 @@ authController.init = function (app, passport) {
         })(req, res, next);
     });
 
+    app.post('/therapist/login', function (req, res, next) {
+
+        console.log(req.body);
+
+        passport.authenticate('local-therapist-login', function (err, therapist, info) {
+            if (!err && therapist) {
+                console.log(therapist);
+                authService.createTherapistToken(therapist, function (error, token) {
+                    if (!error)
+                        res.status(200).json({token: token, name: therapist.name, role: therapist.role,image:therapist.image,_id:therapist._id, message: null});
+                });
+            } else {
+                res.status(401).json({token: null, message: info.message});
+            }
+        })(req, res, next);
+    });
+
+
+
     var storage = multer.diskStorage({ //multers disk storage settings
         destination: function (req, file, cb) {
             cb(null, './www/uploads/admin');
@@ -128,7 +147,7 @@ authController.init = function (app, passport) {
                 var name = req.body.name;
                 var baseUrl =  config.userAccountActivateUrl + user._id;
 
-                var mailData     = {email: user.email, subject: 'Sunny Friday Account Activation'},
+                var mailData     = {email: user.email, subject: 'Beup Account Activation'},
                     data         = {
                         templateName: 'Account Activation',
                         siteUrl: baseUrl,
@@ -156,6 +175,45 @@ authController.init = function (app, passport) {
             }
         })(req, res, next);
     });
+
+    app.post('/admin/frontTherapistSignUp', function (req, res, next) {
+
+        passport.authenticate('local-front-therapist-signup', function (err, therapist, info) {
+            if (!err && therapist) {
+
+
+                var name = req.body.name;
+                var baseUrl =  config.therapistAccountActivateUrl + therapist._id;
+
+                var mailData     = {email: therapist.email, subject: 'BeUp Therapist Account Activation'},
+                    data         = {
+                        templateName: 'Account Activation',
+                        siteUrl: baseUrl,
+                        name: name
+
+
+                    },
+                    templateName = "activate-account.vash";
+                mailer.sendMail(mailData, data, templateName, false, function(error, responseStatus) {
+                    if(error){
+                        console.log('e');
+                        console.log(error);
+                    }
+                    console.log('responseStatus');
+                    console.log(responseStatus);
+                });
+
+                authService.createTherapistToken(therapist, function (err, token) {
+                    if (!err)
+                        res.status(200).json({token: token, message: null});
+                });
+            } else {
+
+                res.status(400).json({token: null, message: info.message});
+            }
+        })(req, res, next);
+    });
+
 
     app.get('/', function (req, res) {
         res.render('front');

@@ -14,7 +14,6 @@ angular.module('myApp.constants', []).constant('CONFIG', {
   ],
   userType:[
     {type: 'customer'},
-    {type: 'Therapist'}
 
 
   ]

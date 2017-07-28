@@ -46,8 +46,8 @@
            <th>
             <a> Email</a>
            </th>
-        <th>
-            <a> Type</a></th>
+       <!-- <th>
+            <a> Type</a></th>-->
 
        <!-- <th>
             <a> Followers</a></th>
@@ -59,10 +59,10 @@
         <th>
             <a> Posts</a></th>-->
        <!-- <th>
-            <a> Inbox</a></th>
+            <a> Inbox</a></th>-->
         <th>
-            <a> Sentbox</a></th>
-           <th>-->
+            <a> Date And time</a></th>
+           <th>
             <a> Status</a></th>
 
           <th><a>Action</a></th>
@@ -74,8 +74,9 @@
          <td> {{itemsPerPage*(currentPage-1) + $index  + 1}}</td>
                   <td>{{item.name + ' ' + item.lastName }}</td>
                       <td>{{item.email}}</td>
-                  <td>{{item.type}}</td>
-         <td><li ng-repeat="x in type | orderBy : 'customer'">{{x.customer + ", " + x.customer}}</li></td>
+                      <td>{{item.created}}</td>
+                 <!-- <td>{{item.type}}</td>-->
+
         <!-- <td>   <a  style="cursor: pointer;" ng-click="followers(item._id)">followers</a></td>
          <td>   <a  style="cursor: pointer;" ng-click="following(item._id)">following</a></td>
 
@@ -128,7 +129,7 @@
                 </div>
 
 
-  <script type="text/ng-template" id="followers.html">
+ <!-- <script type="text/ng-template" id="followers.html">
       <div class="modal-header">
           <h3>Followers!</h3>
       </div>
@@ -175,10 +176,10 @@
           </div>
       </div>
 
-  </script>
+  </script>-->
 
 
-  <script type="text/ng-template" id="following.html">
+  <!--<script type="text/ng-template" id="following.html">
       <div class="modal-header">
           <h3>Following!</h3>
       </div>
@@ -234,4 +235,4 @@
           </div>
       </div>
 
-  </script>
+  </script>-->
