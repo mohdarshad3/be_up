@@ -1,0 +1,106 @@
+<!DOCTYPE html>
+<html ng-app="Front">
+<head>
+<title>Be Up</title>
+<meta charset="utf-8">
+<meta name="viewport" content="width=device-width, initial-scale=1">
+<META NAME="ROBOTS" CONTENT="NOINDEX, NOFOLLOW">
+<link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/bootstrap/3.3.7/css/bootstrap.min.css">
+<link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/bootstrap/3.3.7/css/bootstrap-theme.min.css">
+<link rel="stylesheet" type="text/css" href="front/css/style.css">
+<link rel="stylesheet" type="text/css" href="front/css/font-awesome.css">
+<link href="https://fonts.googleapis.com/css?family=Roboto:300,300i,400,400i,500,500i,700,700i" rel="stylesheet">
+<script src="https://ajax.googleapis.com/ajax/libs/jquery/3.2.1/jquery.min.js"></script>
+<script src="https://maxcdn.bootstrapcdn.com/bootstrap/3.3.7/js/bootstrap.min.js"></script>
+</head>
+<script type="text/javascript">
+$(document).ready(function(){
+	$('#be_up_nav li a').parents().removeClass('active')
+	$('#be_up_nav li a').click(function(){
+		$(this).parent().addClass('active');
+		if ($(window).width() < 768) {
+			$('.navbar-toggle').trigger('click')
+		}
+		$('html, body').animate({
+			scrollTop: $( $(this).attr('href') ).offset().top -90
+		}, 1000);
+		return false;
+
+		});
+});
+</script>
+<body  data-spy="scroll" data-target=".navbar">
+	<!-- Include Header-->
+	<ng-include src="headerurl"></ng-include>
+	<!-- Include Content-->
+	<div ui-view></div>
+	<!-- Include Appointment-->
+	<ng-include src="'front/directives/appointment.html'"></ng-include>
+	<!-- Include Footer-->
+	<footer  ng-include="'front/directives/footer.html'"></footer>
+	<!--All Script -->
+	<script src="front/lib/angular/angular.min.js"></script>
+	<script src="front/lib/angular-rateit/dist/ng-rateit.js"></script>
+	<script src="front/lib/ui-router/release/angular-ui-router.js"></script>
+	<script src="front/lib/angular-route/angular-route.js"></script>
+	<script src="front/lib/angular-resource/angular-resource.js"></script>
+	<script src="front/lib/ngstorage/ngStorage.js"></script>
+	<script src="front/lib/angular-messages/angular-messages.js"></script>
+	<script src="front/lib/angular-bootstrap/ui-bootstrap.min.js"></script>
+	<script src="front/lib/angular-bootstrap/ui-bootstrap-tpls.min.js"></script>
+	<script src="front/lib/ng-file-upload/ng-file-upload-shim.min.js"></script>
+	<!-- for no html5 browsers support -->
+	<script src="front/lib/ng-file-upload/ng-file-upload.min.js"></script>
+	<script src="front/lib/angular-toastr/dist/angular-toastr.min.js"></script>
+	<script src="front/lib/angular-toastr/dist/angular-toastr.tpls.min.js"></script>
+	<script src="front/lib/angular-underscore-module/angular-underscore-module.js"></script>
+	<script src="front/lib/underscore/underscore-min.js"></script>
+	<!-- angular confirm modal -->
+	<script src="front/lib/angular-confirm-modal/angular-confirm.min.js"></script>
+	<script src="front/lib/angucomplete/angucomplete.js"></script>
+	<script src="front/lib/angucomplete-alt/angucomplete-alt.js"></script>
+	<script src="front/lib/angular-loaders/dist/angular-loaders.js"></script>
+
+	<script src="front/lib/angularjs-slider/dist/rzslider.js"></script>
+	<!--build-js-start-->
+
+	<!-- daTT Modules -->
+	<script src="front/scripts/modules/allModules.js"></script>
+	<!--&lt;!&ndash; daTT Settings &ndash;&gt;-->
+	<script src="front/scripts/config/constants.js"></script>
+	<script src="front/scripts/settings.js"></script>
+	<!-- daTT Javascript Extensions -->
+	<!--<script src="front/scripts/extensions/storage.js"></script>-->
+	<!-- daTT Routing -->
+	<script src="front/scripts/routing/angRoutes.js"></script>
+	<!-- daTT Services -->
+	<script src="front/scripts/services/dataService.js"></script>
+	<script src="front/scripts/services/adminService.js"></script>
+	<script src="front/scripts/services/userService.js"></script>
+	<script src="front/scripts/services/otherUserService.js"></script>
+	<script src="front/scripts/services/productCategoryService.js"></script>
+	<script src="front/scripts/services/userTimeLineService.js"></script>
+	<script src="front/scripts/services/messageBoardService.js"></script>
+	<!-- daTT Factory -->
+	<script src="front/scripts/factory/interceptor.js"></script>
+	<!-- daTT Directives -->
+	<script src="front/scripts/validations/validation.js"></script>
+	<!-- daTT Controllers -->
+	<script src="front/scripts/controllers/controllers.js"></script>
+	<script src="front/scripts/controllers/productCategoryCtrl.js"></script>
+	<script src="front/scripts/controllers/messageBoardCtrl.js"></script>
+	<script src="front/scripts/controllers/userCtrl.js"></script>
+	<script src="front/scripts/controllers/otherUserCtrl.js"></script>
+	<script src="front/scripts/controllers/userTimeLineCtrl.js"></script>
+	<script src="front/scripts/directives/directives.js"></script>
+	<script src="front/scripts/directives/ng-flags.js"></script>
+	<script src="front/scripts/factory/factory.js"></script>
+	<script src="front/scripts/directives/filters.js"></script>
+	<script src="front/lib/jquery-ui-1.10.4.custom.min.js"></script>
+	<script src="front/bootstrap/js/bootstrap.min.js"></script>
+	<script src="front/scripts/lazy-scroll.min.js"></script>
+	<script src="front/lib/ngInfiniteScroll/build/ng-infinite-scroll.js"></script>
+	<script src="front/lib/angular-google-places-autocomplete/src/autocomplete.js"></script>
+	<!-- IE10 viewport hack for Surface/desktop Windows 8 bug -->
+</body>
+</html>
