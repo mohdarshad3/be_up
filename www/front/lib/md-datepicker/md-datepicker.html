@@ -1,0 +1,387 @@
+<link rel="import" href="../polymer/polymer.html">
+<link rel="import" href="../elliptical-polymer-behaviors/component-behavior.html">
+<link rel="import" href="../jquery-ui-import/datepicker.html">
+<link rel="import" href="../moment-import/moment.html">
+
+<dom-module id="md-datepicker">
+    <template>
+        <div class="native">
+            <input type="text" class="[[cssClass]]" placeholder="[[placeholder]]" data-type="date"
+                   value="[[dataValue]]" touch-input />
+        </div>
+        <div class="desktop">
+            <span class="icon-[[icon]]"></span>
+            <input type="text" class="[[cssClass]]" data-type="date" placeholder="[[placeholder]]"
+                   value="[[dataValue]]" desktop-input />
+
+            <div style="display:none">
+                <div data-id="[[dataId]]" class="md-datepicker-header">
+                    <div class="md-datepicker-day">
+                    </div>
+                    <div class="md-datepicker-date">
+                        <div class="md-datepicker-month">
+                        </div>
+                        <div class="md-datepicker-day-num">
+                        </div>
+                        <div class="md-datepicker-year">
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </template>
+</dom-module>
+<script>
+    document.addEventListener('WebComponentsReady', function () {
+        $.datepicker._material={};
+        $.datepicker._selectDateOverload = $.datepicker._selectDate;
+        $.datepicker._selectDate = function(id, dateStr) {
+            var target = $(id);
+            var inst = this._getInst(target[0]);
+            inst.inline = true;
+            $.datepicker._selectDateOverload(id, dateStr);
+            inst.inline = false;
+            this._updateDatepicker(inst);
+            var header=this._material[inst.id];
+            $(".ui-datepicker").prepend(header);
+        };
+    });
+
+
+    Polymer({
+
+        is: 'md-datepicker',
+
+        behaviors: [Elliptical.ComponentBehavior],
+
+        properties: {
+            cssClass: {
+                type: String,
+                value: null
+            },
+            placeholder: {
+                type: String,
+                value: ''
+            },
+            dataId: {
+                type: String,
+                value: null
+            },
+            dataName: {
+                type: String,
+                value: null
+            },
+            dataValue: {
+                type: String,
+                value: null
+            },
+            min:{
+                type:String,
+                value:null
+            },
+            max:{
+                type:String,
+                value:null
+            },
+            icon:{
+                type:String,
+                value:null
+            },
+            _id:{
+                type:String,
+                value:null
+            },
+            _datePicker:{
+                type:Array,
+                value:null
+            },
+            _state:{
+                type:String,
+                value:null
+            }
+        },
+
+        listeners: {},
+
+        ready: function () {
+            var id=(!this.dataId) ? 'dp' + $.utils.string.random() : this.dataId;
+            this._id=id;
+            this._setIcon();
+            if(this._device.touch){
+                this._initNativeComponent(id);
+            }else{
+                this._initDesktopComponent(id);
+            }
+        },
+
+        _initDesktopComponent: function (id) {
+            var self = this;
+            this.element.query('.desktop', function (element) {
+                element.show();
+                self._desktopComponent(id);
+            });
+        },
+
+        _desktopComponent: function (id) {
+            var context = this;
+            this._assignId(id);
+            this._assignHeaderId(id);
+            var selector = '[data-id="' + id + '"]';
+            var headerHtml = $(selector + '.md-datepicker-header');
+
+            var changeMaterialHeader = function (inst, date) {
+                var year = date.format('YYYY');
+                var month = date.format('MMM');
+                var dayNum = date.format('D');
+                var isoDay = date.isoWeekday();
+
+                var weekday = new Array(7);
+                weekday[1] = "Monday";
+                weekday[2] = "Tuesday";
+                weekday[3] = "Wednesday";
+                weekday[4] = "Thursday";
+                weekday[5] = "Friday";
+                weekday[6] = "Saturday";
+                weekday[7] = "Sunday";
+
+                $(selector + ' .md-datepicker-day').text(weekday[isoDay]);
+                $(selector + ' .md-datepicker-year').text(year);
+                $(selector + ' .md-datepicker-month').text(month);
+                $(selector + ' .md-datepicker-day-num').text(dayNum);
+                if (inst !== undefined) {
+                    $.datepicker._material[inst.id] = $(selector + '.md-datepicker-header');
+                }
+            };
+
+            var onClose = function () {
+                setTimeout(function () {
+                    headerHtml.hide();
+                    context._state=null;
+                }, 300);
+            };
+
+            var onShow = function (ele, inst) {
+                headerHtml.show();
+                context._onDesktopShow(ele, inst.id);
+            };
+
+            var onSelect = function (val) {
+                var data = {
+                    id: context._id,
+                    value: val,
+                    name: context.dataName,
+                    device: 'desktop'
+                };
+                context._resetSemanticState();
+                context.element.trigger('md.datepicker.select', data);
+            };
+
+
+            this.element.on('focus', '[desktop-input]', function () {
+                var datePicker=$('.ui-datepicker');
+                if(!context._state){
+                    setTimeout(function(){
+                        datePicker.prepend(headerHtml);
+                        headerHtml.show();
+                        context._state='visible';
+                    },30);
+                }else {
+                    datePicker.prepend(headerHtml);
+                    headerHtml.show();
+                }
+            });
+
+            var opts = {
+                showButtonPanel: true,
+                closeText: 'SET',
+                dayNamesMin: ['S', 'M', 'T', 'W', 'T', 'F', 'S'],
+                onSelect: function (date, inst) {
+                    onSelect(date);
+                    changeMaterialHeader(inst, moment(date));
+                },
+                onClose: function (date, inst) {
+                    onClose();
+                },
+                beforeShow: function (ele, inst) {
+                    onShow(ele, inst);
+                }
+            };
+            var min = this.min;
+            var max = this.max;
+            if (min !== undefined) {
+                opts.minDate = min;
+            }
+            if (max !== undefined) {
+                opts.minDate = max;
+            }
+            var dp = this.element.find("[desktop-input]");
+            dp.datepicker(opts);
+            this._datePicker=dp;
+            changeMaterialHeader(undefined, moment());
+        },
+
+
+        _assignId: function (id) {
+            var input = this.element.find('[desktop-input]');
+            input.attr('id', id);
+            if(this.dataName) input.attr('name',this.dataName);
+            if(this.dataValue) input.val(this.dataValue);
+        },
+
+        _assignHeaderId: function (id) {
+            var div = this.element.find('.md-datepicker-header');
+            div.attr('data-id', id);
+        },
+
+        _onDesktopShow: function (ele, id) {
+            var value = $(ele).val();
+            var data = {
+                id: id,
+                value: value,
+                name: this.dataName,
+                device: 'desktop'
+            };
+
+            this.element.trigger('md.datepicker.show', data);
+        },
+
+        _initNativeComponent: function (id) {
+            this._assignNativeId(id);
+            this.element.find('.native').show();
+            this._nativeEvents();
+        },
+
+        _nativeEvents: function () {
+            this._event(this.element, 'touchstart', '[data-type=date]', this._onNativeTouch.bind(this));
+            this._event(this.element, 'change', '[touch-input]', this._onNativeChange.bind(this));
+        },
+
+        _onNativeTouch: function (event) {
+            var target = $(event.currentTarget);
+            this._setNativeFocus(target);
+        },
+
+        _setNativeFocus: function (target) {
+            target.attr('type', 'date');
+            target[0].focus();
+            this._onNativeShow(event);
+        },
+
+        _assignNativeId: function (id) {
+            var input = this.element.find('[touch-input]');
+            input.attr('id', id);
+            var min = this.min;
+            var max = this.max;
+            if (min !== undefined) {
+                input.attr('min', min);
+            }
+            if (max !== undefined) {
+                input.attr('max', max);
+            }
+            if(this.dataName) input.attr('name',this.dataName);
+            if(this.dataValue) input.val(this.dataValue);
+        },
+
+        _onNativeShow: function (event) {
+            var value = $(event.currentTarget).val();
+            var data = {
+                id: this._id,
+                value: value,
+                name: this.dataName,
+                device: 'touch'
+            };
+
+            this.element.trigger('md.datepicker.show', data);
+        },
+
+        _onNativeChange: function (event) {
+            var data = {
+                id: this._id,
+                value: $(event.currentTarget).val(),
+                name: this.dataName,
+                device: 'touch'
+            };
+            this._resetSemanticState();
+            this.element.trigger('md.datepicker.select', data);
+        },
+
+        _onIconSet: function (span) {
+            span.addClass('prefix');
+        },
+
+        _setIcon:function(){
+            if (!this.icon) return;
+            var span = this.element.find('span');
+            var icon = 'icon-' + this.icon;
+            span.attr('class', '');
+            span.addClass(icon);
+            this._onIconSet(span);
+        },
+
+        _getInput:function(){
+            if (this._device.touch) {
+                return this.element.find('[touch-input]');
+            } else {
+                return this.element.find('[desktop-input]');
+            }
+        },
+
+        setDate: function (value) {
+            if (this._device.touch) {
+                var input = this.element.find('[touch-input]');
+                input.val(value);
+            } else {
+                var dp = this._datePicker;
+                dp.datepicker('setDate', value);
+            }
+        },
+
+        value: function () {
+            var input=this._getInput();
+            return input.val();
+        },
+
+        disable:function(){
+            this.setAttribute('disabled','disabled');
+            var input=this._getInput();
+            input[0].setAttribute('disabled','disabled');
+        },
+
+        enable:function(){
+            this.removeAttribute('disabled');
+            var input=this._getInput();
+            input[0].removeAttribute('disabled');
+        },
+
+        getDate: function () {
+            if (this._device.touch) {
+                var input = this.element.find('[touch-input]');
+                return input.val();
+            } else {
+                var dp = this._dataPicker;
+                return dp.datepicker('getDate');
+            }
+        },
+
+        dialog: function () {
+            if (this._device.touch) {
+                var input = this.element.find('[touch-input]');
+                this._setNativeFocus(input);
+            } else {
+                var dp = this._datePicker;
+                dp.datepicker('dialog');
+            }
+        },
+
+        clear: function () {
+            if (this._device.touch) {
+                var input = this.element.find('[touch-input]');
+                input.val('');
+            } else {
+                var dp = this._datePicker;
+                dp.datepicker('setDate', null);
+            }
+        }
+    });
+
+</script>

@@ -1,0 +1,846 @@
+.why_join{float: left; width: 100%; text-align: center; padding: 50px 0 0}
+.why_join h2{
+	    font-family: 'Roboto', sans-serif;
+	    font-size: 30px;
+	    font-weight: 500;
+	    color: #272727;
+	    text-transform: uppercase;
+	    margin: 0;
+	    margin-bottom: 15px;
+}
+.why_join p{font-family: 'Roboto', sans-serif;  font-size: 16px; font-weight: normal; color: #6e6e6e;}
+.why_join ul{float: left; width: 100%; margin: 0; padding: 0; margin-top: 30px}
+.why_join ul li{width: 23%; float: none; display: inline-block; border: 1px solid #ebebeb; margin-right: 25px; padding: 15px}
+.why_join ul li:last-child{margin-right: 0}
+.why_join ul li span{width: 60px ;height: 60px; border-radius: 50%; background: #0fc1a7; text-align: center; line-height: 60px; float: none; font-size: 30px ;display: inline-block; color: #fff}
+.why_join ul li h3{color: #34383d;font-family: 'Roboto', sans-serif;  font-size: 18px; font-weight: bold; }
+.why_join ul li p{color: #6e6e6e;font-family: 'Roboto', sans-serif;  font-size: 16px; font-weight: normal; }
+.recent_feature{float: left; width: 100%; margin: 50px 0 60px}
+span#main-feat {
+    float: left;
+    width: 100%;
+}
+span#main-feat img{
+    float: left;
+    width: 100%;
+}
+.recent_feature h2{color: #272727;font-family: 'Roboto', sans-serif;  font-size: 25px; font-weight: 500; margin: 0; text-transform: uppercase; margin-bottom: 25px}
+.recent_feature ul{float: left; width: 100%; margin: 0; padding: 0;}
+.recent_feature ul li{width: 100%; float: left; border: 1px solid #ebebeb; padding: 10px 15px; margin-bottom: 15px}
+.recent_feature ul li:nth-child(-n+2){background: #f7fefd}
+.recent_feature ul li h4{margin: 0; float: left; width: 55%; color: #6e6e6e; font-family: 'Roboto', sans-serif;
+font-weight: 500; font-size: 16px; line-height: 35px;}
+.recent_feature ul li h5{margin: 0; float: left; width: 30%;  color: #6e6e6e; font-family: 'Roboto', sans-serif;
+font-weight: normal; font-size: 16px; line-height: 35px;}
+.recent_feature ul li a{margin: 0; float: left; width: 15%; background: #fd9e40; padding: 10px 15px; text-transform: uppercase;  color: #fff; border-radius: 20px ;text-align: center; text-decoration: none; font-family: 'Roboto', sans-serif;
+font-weight: bold; font-size: 16px;}
+.recent_feature ul li:nth-child(n+3) a{background: #0fc1a7}
+.recent_feature ul li h4 span{color: #6ecf26; font-size: 18px ; margin-right: 10px}
+.recent_feature ul li h5 span{color: #c1990f;  font-size: 18px ; margin-right: 10px}
+.feat_img{float: left; width: 100%; border: 1px solid #ebebeb;}
+.dp-div,.time-dp {
+    float: left;
+    width: 100%;
+     border-bottom: 1px solid #ebebeb;
+     padding: 15px
+}
+.dp-div span {
+    float: left;
+    width: auto;
+    border-radius: 50%;
+    overflow: hidden;
+}
+.dp-div h4 {
+    float: right;
+    width: 80%;
+    margin: 0;
+    line-height: 2;
+    color: #272727;
+    font-family: 'Roboto', sans-serif; 
+    font-weight: bold;
+    text-transform: uppercase;
+    font-size: 16px
+}
+.dp-div h4 small {
+    width: 100%;
+    float: left;
+    color: #6e6e6e;
+    font-family: 'Roboto', sans-serif; 
+    font-weight: normal;
+    text-transform: capitalize;
+    font-size: 16px;
+
+}
+
+.time-dp span{
+	 color: #6e6e6e;
+    font-family: 'Roboto', sans-serif; 
+    font-weight: normal;
+    text-transform: capitalize;
+    font-size: 16px;
+    width: 50%;
+    float: left;
+}
+.time-dp span:first-child{text-align: left;}
+.time-dp span:last-child{width: 48%; float: right; text-align: left;}
+.time-dp span:first-child i{color: #c1990f;  font-size: 18px ; margin-right: 10px}
+.time-dp span:last-child i{color: #6ecf26;  font-size: 18px ; margin-right: 10px}
+.feat_img p{padding: 15px; color: #6e6e6e; font-family: 'Roboto', sans-serif; font-weight: normal;font-size: 16px; float: left; margin: 0}
+a#more_jobs {
+    float: left;
+    padding: 10px 15px;
+    background: #0fc1a7;
+    color: #fff;
+    text-transform: uppercase;
+    font-family: 'Roboto', sans-serif;
+     font-weight: bold;
+     font-size: 16px;
+     text-decoration: none;
+     margin-top: 10px
+}
+a#more_jobs i{margin-left: 10px}
+.unlimited h2{
+	  font-family: 'Roboto', sans-serif;
+	    font-size: 30px;
+	    font-weight: 500;
+	    color: #272727;
+	    text-transform: uppercase;
+	    margin: 0;
+	    margin-bottom: 25px;
+}
+.unlimited{float: left; width: 100% ;text-align: center; padding: 50px 0}
+.unlimited ul{margin: 0; padding: 0; float: none; width: 85%; margin: 0 auto; display: block;}
+.unlimited ul li{width: 31%;float: left; border: 1px solid #ebebeb; padding: 10px 15px; margin-right: 20px }
+.unlimited ul li span{width: 60px ;height: 60px; border-radius: 50%; background: #0fc1a7; text-align: center; line-height: 60px; float: none; font-size: 30px ;display: inline-block; color: #fff}
+.unlimited ul li h3{float: right; width: 72%; margin: 0;  color: #34383d;font-family: 'Roboto', sans-serif;
+     font-weight: bold; font-size: 18px ; line-height: 2; text-align: left;}
+     .unlimited ul li h3 small{
+     	float: left; width: 100%; font-size: 15px; font-weight: normal }
+.bann_cont.why_beup h1 span{font-size: 60px ; font-weight: 500; color: #fff}
+.whenever_need{float: left; width: 100%; background: url(../images/when-need.jpg); background-position: center; background-size: cover;padding-top: 55px}
+.whenever_need h3{font-family: 'Roboto', sans-serif; font-weight: 500; font-size: 30px ; text-transform: uppercase; color: #272727; margin: 0; margin-bottom: 20px}
+
+.whenever_need p{font-family: 'Roboto', sans-serif; font-weight: normal; font-size: 16px ; color: #6e6e6e; text-align: justify;}
+.testimo{float: left; width: 100%; padding: 50px 0}
+.testi_img{ width: 398px; height: 398px; overflow: hidden; border-radius: 50%; border: 1px solid #fff; }
+.testimo p{font-family: 'Roboto', sans-serif; font-weight: normal; font-size: 25px ; color: #6e6e6e; font-style: italic; position: relative; margin-top: 20px}
+
+.testimo p:after {
+	position: absolute;
+	    content: "\f10e";
+    display: inline-block;
+    font: normal normal normal 14px/1 FontAwesome;
+    font-size: inherit;
+    text-rendering: auto;
+    -webkit-font-smoothing: antialiased;
+    -moz-osx-font-smoothing: grayscale;
+    color: #0fc1a7;
+    font-size: 30px;
+    bottom: -5px;
+    right: 35%;
+}
+.testimo p:before {
+	position: absolute;
+	    content:"\f10d";
+    display: inline-block;
+    font: normal normal normal 14px/1 FontAwesome;
+    font-size: inherit;
+    text-rendering: auto;
+    -webkit-font-smoothing: antialiased;
+    -moz-osx-font-smoothing: grayscale;
+    color: #0fc1a7;
+    font-size: 30px;
+    top: -25px
+}
+.whenever_need.with_you{background: url(../images/with_you.jpg); padding: 50px 0}
+.whenever_need.with_you .carousel-control{background-image: unset; width: 40px;height: 40px; top: 50%; background-color: #384241; opacity: 1; border-radius: 50%; line-height: 40px; font-size: 35px}
+.whenever_need.with_you .carousel-control.left{left: 30px}
+.whenever_need.with_you .carousel-control.right{right: 30px;}
+.connect{float: left; width: 100%; text-align: center; padding: 50px 0}
+.connect h3{
+	font-family: 'Roboto', sans-serif; font-weight: 500; font-size: 30px ; color: #272727; text-transform: uppercase;}
+
+.connect p{font-family: 'Roboto', sans-serif; font-weight: normal; font-size: 16px ; color: #6e6e6e;}
+.connect ul{padding: 0; margin: 0; width: 100%; float: none; width: 75%; margin: 30px auto 0}
+.connect ul li{width: 31.5%; float: none; display: inline-block;border: 2px solid #ebebeb; margin-right: 20px;}
+.connect ul li:last-child{margin-right: 0}
+.connect ul li span{width: 100%; float: left; text-align: center; border-bottom: 2px solid #ebebeb; color: #0fc1a7; font-family: 'Roboto', sans-serif; font-weight: bold; font-size: 20px; text-transform: uppercase; padding: 15px}
+.connect ul li span i{color: #6e6e6e; margin-right: 15px; font-size: 25px}
+.connect ul li p{padding: 15px; float: left}
+.kind_therapy{float: left; width: 100%; background: url(../images/kind-bg.jpg); background-position: center; background-size: cover; padding: 45px 0}
+.kind_therapy ul{width: 80%; float: none; margin: 0 auto; text-align: center;}
+.kind_therapy ul li{width: 100%; padding: 15px; background: #52cfbc; margin-bottom: 15px; float: left; border-radius: 10px}
+.kind_therapy ul li:nth-child(2){background: #fd9e40}
+.kind_therapy ul li h3{font-family: 'Roboto', sans-serif; font-weight: normal; font-size: 20px; text-transform: uppercase; color: #fff; margin: 0; line-height: 58px ;text-align: left;}
+.kind_therapy ul li span{width: 60px; height: 60px ;background: #fff; line-height: 60px; border-radius: 50%; float: left; text-align: center; margin-right: 20px}
+.kind_therapy .kind_title h3{font-family: 'Roboto', sans-serif; font-weight: 500; font-size: 30px ; color: #272727; text-transform: uppercase; margin: 0 0 25px}
+.kind_therapy .kind_title p{font-family: 'Roboto', sans-serif; font-weight: normal; font-size: 16px ; color: #6e6e6e; margin: 0}
+.kind_therapy .kind_title a{float: left;
+    padding: 10px 25px;
+    background: #fd9e40;
+    color: #fff;
+    text-transform: uppercase;
+    font-family: 'Roboto', sans-serif;
+     font-weight: bold;
+     font-size: 16px;
+     border-radius: 20px;
+     text-decoration: none;
+     margin-top: 10px}
+
+.responses{float: left; width: 100%; padding: 50px 0}
+.responses h3{font-family: 'Roboto', sans-serif; font-weight: 500; font-size: 30px ; color: #272727; text-transform: uppercase; margin: 0 0 25px; text-align: center;}
+.responses p{font-family: 'Roboto', sans-serif; font-weight: normal; font-size: 16px ; color: #6e6e6e; margin: 0; text-align: center;}
+
+div#responses {
+    width: 90%;
+    margin: 0 auto;
+    border: 1px solid #ebebeb;
+    padding: 15px;
+    margin-top: 40px;
+    text-align: center;
+}
+div#responses .therapist_img {
+    width: 100px;
+    height: 100px;
+    margin: 0 auto;
+    border-radius: 50%;
+    display: block;
+    overflow: hidden;
+}
+div#responses .carousel-control{background-image: unset; width: 40px;height: 40px; top: 50%; background-color: #0fc1a7; opacity: 1; border-radius: 50%; line-height: 40px; font-size: 25px}
+div#responses .carousel-caption{position: static; text-shadow: none}
+div#responses .carousel-caption p{width: 70%; float: none; margin: 0 auto; font-family: 'Roboto', sans-serif; font-weight: normal; font-size: 16px ; color: #6e6e6e; text-align: center;}
+div#responses .carousel-caption span{color: #899096;font-family: 'Roboto', sans-serif; font-weight: normal; font-size: 14px ;  margin: 15px 0 ;float: left; width: 100%}
+div#responses .carousel-control.left{left: 30px}
+div#responses .carousel-control.right{right: 30px;}
+div#responses .carousel-indicators .active{background: #0fc1a7}
+div#responses .carousel-indicators li{background: #ebebeb}
+div#responses .carousel-indicators {bottom: -5px;}
+.terms-use{float: left; width: 100%; padding: 45px 0 25px; counter-reset: section;}
+.terms-use h2{font-family: 'Roboto', sans-serif; font-weight: 500; font-size: 30px ; color: #272727; text-transform: uppercase; margin: 0 0 25px; text-align: center;}
+.terms-use p{font-family: 'Roboto', sans-serif; font-weight: normal; font-size: 16px ; color: #6e6e6e; margin: 0; text-align: center;}
+.terms-use ol{float: left;margin-top: 20px}
+.terms-use ol >li{margin-bottom: 20px}
+.terms-use ol li h3{font-family: 'Roboto', sans-serif; font-weight: bold; font-size: 18px ; color: #272727; text-transform: capitalize; margin: 0 0 5px; text-align: left; counter-reset: subsection; }
+.terms-use ol li h3:before{counter-increment: section;  content: counter(section)"-"}
+.terms-use ol li p{font-family: 'Roboto', sans-serif; font-weight: normal; font-size: 16px ; color: #6e6e6e; margin: 0; text-align: left;}
+.terms-use ol li ul li{font-family: 'Roboto', sans-serif; font-weight: normal; font-size: 16px ; color: #6e6e6e; margin: 0; text-align: left; margin-bottom: 15px}
+.terms-use ol li ul li i{color: #6e6e6e; font-size: 18px; margin-right: 15px}
+.bann_cont.experts p{font-family: 'Roboto', sans-serif; font-weight: 300; font-size: 16px ; color: #fff; text-align: center; text-transform: capitalize; margin: 15px 0 10px}
+
+.bann_cont.experts form {
+    float: none;
+    margin: 0 auto 20px;
+    display: block;
+    max-width: 500px;
+    width: 100%;
+    position: relative;
+    clear: both;
+}
+
+.bann_cont.experts input[type="text"] {
+    width: 100%;
+    height: 40px;
+    border:0;
+}
+
+.bann_cont.experts button {
+    position: absolute;
+    right: 0;
+    top: 0;
+    height: 40px;
+    width: 40px;
+    background: transparent;
+    border:0;
+    border-left: 1px solid #a8a8a8;
+    color: #a8a8a8; 
+    font-size: 15px;
+    box-shadow: none;
+
+}
+
+.terms-use.filt .filter{float: left; width: 100%; position: relative;}
+.terms-use.filt .offline{float: left; line-height: 2}
+.terms-use.filt select#sel1{float: right; max-width: 320px;border-radius: 0; box-shadow: none;-webkit-appearance: none;-moz-appearance: none; appearance: none; position: relative;}
+ .terms-use.filt .filter:after{ content: "\f107"; position: absolute; display: inline-block;
+    font: normal normal normal 14px/1 FontAwesome;
+    font-size: inherit;
+    text-rendering: auto;
+    -webkit-font-smoothing: antialiased;
+    -moz-osx-font-smoothing: grayscale; 
+        right: 10px;
+    top: 7px;
+    font-size: 20px; color: #a2a2a2; outline: none}
+
+.terms-use.filt .offline label, .terms-use.filt .offline span{color: #7c7c7c; font-family: 'Roboto', sans-serif; font-weight: normal; font-size: 16px ; margin: 0 15px; margin-left: 0; }
+.terms-use.filt .offline label input[type="checkbox"]{position: static; margin-right: 10px; height: 15px ; width: 15px; float: left; margin-top: 8px}
+.terms-use.filt .offline span a{color: #7c7c7c }
+.experts-pro {
+    float: left;
+    width: 100%;
+    padding: 75px 0 35px;
+}
+.experts-pro ul {
+    width: 100%;
+    float: left;
+}
+
+.experts-pro ul li {
+    float: left;
+    width: 23.7%;
+    border: 1px solid #dbdbdb;
+    text-align: center;
+    margin:0 20px 75px 0;
+    display: none;
+}
+.experts-pro ul li:nth-child(4n){margin-right: 0}
+.cal-mail{float: left; width: 100% ;border-top: 1px solid #dbdbdb; }
+span#exp-dp{width: 100px; height: 100px; border-radius: 50%; border: 3px solid #fff; overflow: hidden; display: inline-block; box-shadow: 0px 0px 0px 1px #dbdbdb; position: relative; top: -50px }
+.experts-pro ul li h3{
+    color: #34383d;
+    font-family: 'Roboto', sans-serif;
+     font-weight: normal; 
+     font-size: 22px ;
+     margin: 0
+
+}
+.experts-pro ul li h4{
+    color: #899096;
+    font-family: 'Roboto', sans-serif;
+     font-weight: normal; 
+     font-size: 14px ;
+     margin: 0;
+     margin-top: 15px}
+.star{float: left; width: 100% ;padding: 15px 0}
+.star .fa-star{color: #ffb533; font-size: 20px}
+.star .fa.blank{color: #7f7f7f; font-size: 20px}
+.experts-pro ul li h5{
+    color: #606366;
+    font-family: 'Roboto', sans-serif;
+     font-weight: normal; 
+     font-size: 16px ;}
+     .experts-pro ul li h5 span{
+        color: #0fc1a7
+     }
+
+     .cal-mail span{float: left; width: 33%; border-right: 1px solid #dbdbdb; padding: 10px; color: #b2b2b2; font-size: 20px}
+     .cal-mail span:last-child{border-right: 0}
+
+.experts-pro #loadMore {
+  text-align: center;
+  transition: all 600ms ease-in-out;
+  -webkit-transition: all 600ms ease-in-out;
+  -moz-transition: all 600ms ease-in-out;
+  -o-transition: all 600ms ease-in-out;
+  width: 200px; float: none;
+  margin: 0 auto;
+  display: block;
+  clear: both;
+}
+
+
+.experts-pro #loadMore i{color: #0fc1a7; font-size: 50px}
+.experts-pro #loadMore span{width: 100%; float: left;
+text-align: center; color: #0fc1a7; font-size: 16px; font-family: 'Roboto', sans-serif;font-weight: 500; text-transform: uppercase;}
+/********expert main profile************/
+.bann_cont.expo-pro{background: url(../images/expo-pro.jpg); float: left; width: 100%; height: 360px; background-size: cover; background-position: center}
+.expert_main{float: left; width: 100%; border: 1px solid #dbdbdb; text-align: center ; margin-top: -175px; background: #fff;}
+
+.expert_main h3{
+    color: #333333;
+    font-family: 'Roboto', sans-serif;
+     font-weight: normal; 
+     font-size: 40px ;
+     margin: 0;
+     text-transform: capitalize;
+         margin-top: -60px;
+
+}
+.expert_main h4{
+    color: #4c4c4c;
+    font-family: 'Roboto', sans-serif;
+     font-weight: normal; 
+     font-size: 20px ;
+     margin: 0;
+     margin-top: 15px}
+
+
+.expert_main span#exp-dp{width: 215px; height: 215px; border-radius: 50%; border: 3px solid #fff; overflow: hidden; display: inline-block; box-shadow: 0px 0px 0px 1px #dbdbdb; position: relative; top: -100px }
+.expert_main span#exp-dp img{width: 100%}
+.expert_main h5{
+    color: #333333;
+    font-family: 'Roboto', sans-serif;
+     font-weight: normal; 
+     font-size: 16px ;
+     margin: 0;
+     clear: both;
+     margin-top: 15px}
+     .expert_main p{
+         color: #333333;
+    font-family: 'Roboto', sans-serif;
+     font-weight: normal; 
+     font-size: 16px ;
+     margin: 0;
+     margin-top: 15px;
+     clear: both;
+     }
+.expert_main .cal-mail{float: none; display: inline-block; width: auto; border:0; margin: 15px 0 25px}
+.expert_main .cal-mail span{width: auto; text-transform: uppercase; margin-right:  15px; font-family: 'Roboto', sans-serif;
+     font-weight: 600;  font-size: 16px ;}
+.expert_main .cal-mail span i{margin-right: 10px}
+.expert_main .cal-mail span:first-child{background-color: #0fc1a7; color: #ffffff}
+.expert_main .cal-mail span:nth-child(2){background: #9e9e9e;  color: #ffffff}
+.expert_main .cal-mail span:last-child{background: #f0b752;  color: #ffffff; margin-right: 0}
+.summery {
+    float: left;
+    width: 100%;
+}
+.summery ul > li >h3{
+      color: #333333;
+    font-family: 'Roboto', sans-serif;
+     font-weight: 500; 
+     font-size: 24px ;
+     text-transform: uppercase;
+     margin: 0;
+     margin-bottom: 15px;
+     display: inline-block;
+}
+.summery ul > li >h4{
+      color: #0fc1a7;
+    font-family: 'Roboto', sans-serif;
+     font-weight: normal; 
+     font-size: 16px ;
+     display: inline-block;
+     margin-left: 20px
+}
+.summery ul > li >p, .summery ul > li li{
+      color: #4c4c4c;
+    font-family: 'Roboto', sans-serif;
+     font-weight: normal; 
+     font-size: 16px ;
+    
+}
+.summery ul > li#skills li {
+    float: left;
+    width: auto;
+    border: 1px solid #dbdbdb;
+    margin-right: 15px;
+    text-align: center;
+}
+.summery ul > li#skills li:last-child{margin-right: 0}
+.summery ul > li#skills,.summery ul > li#exper {
+    float: left;
+    width: 100%;
+    border-top: 1px solid #dbdbdb;
+    border-bottom: 1px solid #dbdbdb;
+    padding: 20px 0;
+    margin: 15px 0;
+    position: relative;
+}
+.summery ul > li#skills li a{
+    float: left;
+    padding: 10px 15px;
+    color: #939292;
+    font-family: 'Roboto', sans-serif;
+    font-weight: normal;
+    text-decoration: none  ;
+    text-transform: capitalize;
+
+}
+.summery ul > li#edu ul li,.summery ul > li#exper ul li{position: relative; margin-left: 20px; margin-bottom: 10px}
+.summery ul > li#edu ul li:before,.summery ul > li#exper ul li:before{
+    content: "\f111";
+    position: absolute;
+     left: -20px;
+     top:5px;
+    display: inline-block;
+    font: normal normal normal 14px/1 FontAwesome;
+    font-size: inherit;
+    text-rendering: auto;
+    -webkit-font-smoothing: antialiased;
+    -moz-osx-font-smoothing: grayscale;
+    color: #0fc1a7;
+    font-size: 10px !important;
+
+}
+
+div#replay_ryt {
+    float: right;
+    width: 92%;
+}
+span#replay_left {
+    width: 50px;
+    height: 50px;
+    overflow: hidden;
+    border-radius: 5px;
+    float: left;
+}
+div#replay_ryt span{
+    color: #333;
+    font-family: 'Roboto', sans-serif;
+    font-weight: normal;
+    font-size: 18px; text-transform: capitalize;
+}
+div#replay_ryt span small{
+    color: #acabab;
+    font-size: 14px
+}
+div#replay_ryt p{
+    color: #4c4c4c;
+    font-family: 'Roboto', sans-serif;
+    font-weight: normal;
+    font-size: 16px; 
+}
+
+div#replay_ryt h5#replay span small{float: left; color: #c6ad70;font-family: 'Roboto', sans-serif; font-weight: normal; margin: 0; font-size: 16px; margin-right: 10px}
+div#replay_ryt h5#replay span {color: #bebebe; font-family: 'Roboto', sans-serif; font-weight: normal; margin: 0; font-size: 16px}
+div#replay_ryt h5#replay #reply_img{width: 25px ;height: 25px ; float: left; border-radius: 5px; overflow: hidden; margin-right: 10px}
+/*****updated header css************/
+header#login{background-color: transparent !important;}
+.title_bread_cum{float: left; width: 100%; background-color: #0fc1a7; padding: 35px 0}
+.title_bread_cum .bann_cont h1 {
+    font-size: 45px;
+    color: #ffffff;
+    font-family: 'Roboto', sans-serif;
+    font-weight: 300;
+    text-transform: capitalize;
+    float: left;
+    margin: 0;
+    text-align: center;
+    width: 100%;
+}
+.title_bread_cum .breadcrumb {
+    background-color: transparent;
+    text-align: center;
+    margin: 15px 0 0;
+    padding: 0;
+}
+
+.title_bread_cum .breadcrumb li a {
+    color: #ffffff;
+    font-size: 16px;
+    font-family: 'Roboto', sans-serif;
+    font-weight: normal;
+}
+.title_bread_cum .breadcrumb>li+li:before {
+    content: "\f105";
+    display: inline-block;
+    color: #ffffff;
+    font: normal normal normal 14px/1 FontAwesome;
+    font-size: inherit;
+    text-rendering: auto;
+    -webkit-font-smoothing: antialiased;
+    -moz-osx-font-smoothing: grayscale;
+    font-size: 20px;
+}
+
+/**********responsive****************/
+@media (min-width: 320px) and (max-width: 479px){
+.why_join h2{font-size: 20px}
+.why_join p{font-size: 14px}
+.why_join ul li{width: 100%; margin: 0; margin-bottom: 15px}
+.recent_feature ul li{text-align: center;}
+.recent_feature ul li h4{ width: 100%; line-height: normal;}
+.recent_feature ul li h5{ width: 100%; line-height: normal;margin: 20px 0}
+.recent_feature ul li a{width: 50%; float: none; display: inline-block;}
+.recent_feature h2 {text-align: center;}
+.why_join ul li p{font-size: 14px}
+.dp-div, .time-dp{text-align: center;}
+.dp-div span{display: inline-block; float: none;}
+.dp-div h4{width: 100%}
+.feat_img p{text-align: center;}
+.recent_feature{text-align: center;}
+a#more_jobs{float: none; display: inline-block; margin-bottom: 20px}
+.unlimited ul li h3{font-size: 15px}
+.whenever_need{padding: 15px 0 0}
+.whenever_need h3{font-size: 20px; text-align: center;}
+
+.bann_cont.why_beup h1 span{font-size: 40px}
+.unlimited h2{font-size: 20px}
+.unlimited{padding: 20px 0}
+.unlimited ul{width: 100%;}
+.unlimited ul li{width: 100%}
+.testi_img {
+    width: 290px;
+    height: 290px;
+    margin: 0 auto;
+
+}
+.testi_img img{width: 100%}
+.testimo p{font-size: 14px}
+.testimo p:before,.testimo p:after{font-size: 20px}
+.whenever_need p{font-size: 14px}
+.connect{padding: 20px 0}
+.connect h3{font-size: 20px}
+.connect p{font-size: 14px ; text-align: justify;}
+.connect ul,.kind_therapy ul{width: 100%;}
+.connect ul li{width: 100%}
+.kind_therapy ul li h3{font-size: 16px; line-height: 45px;}
+.kind_therapy ul li{padding: 10px}
+.kind_therapy ul li span{width: 50px ;height: 50px ; line-height: 50px}
+.kind_therapy .kind_title h3{font-size: 20px; text-align: center;}
+.kind_therapy .kind_title p{font-size: 14px ;text-align: justify;}
+.kind_therapy .kind_title{text-align: center;}
+.kind_therapy .kind_title a{float: none; display: inline-block; font-size: 14px}
+.responses{padding: 20px 0}
+.responses h3{font-size: 20px}
+.responses p{font-size: 14px}
+div#responses .carousel-control{width: 25px; height: 25px ; line-height: 25px; font-size: 14px}
+div#responses .carousel-control.left{left: 5px;}
+div#responses .carousel-control.right{right: 5px}
+div#responses .carousel-caption p{font-size: 14px}
+
+.terms-use{padding: 20px 0}
+.terms-use h2{font-size: 20px; margin-bottom: 15px}
+.terms-use p{font-size: 14px; text-align: center;}
+.terms-use ol li p, .terms-use ol li ul li{font-size: 14px}
+.experts-pro ul li{width: 100%; margin-right: 0}
+.terms-use.filt .filter{max-width: 300px; width: 100%; float: none; margin: 0 auto}
+.terms-use.filt .offline label, .terms-use.filt .offline span{width: 100%; font-size: 14px}
+.terms-use.filt .filter:after{top: 70px}
+
+
+
+}
+@media (min-width: 480px) and (max-width: 599px){
+.why_join h2{font-size: 20px}
+.why_join p{font-size: 14px}
+.why_join ul li{width: 47%; margin-bottom: 15px; margin-right: 15px}
+.why_join ul li:nth-child(2n){margin-right: 0}
+.recent_feature ul li{text-align: center;}
+.recent_feature ul li h4{ width: 100%; line-height: normal;}
+.recent_feature ul li h5{ width: 100%; line-height: normal;margin: 20px 0}
+.recent_feature ul li a{width: 30%; float: none; display: inline-block;}
+.recent_feature h2 {text-align: center;}
+.why_join ul li p{font-size: 14px}
+.dp-div, .time-dp{text-align: center;}
+.dp-div span{display: inline-block; float: none;}
+.dp-div h4{width: 100%}
+.feat_img p{text-align: center;}
+.recent_feature{text-align: center;}
+a#more_jobs{float: none; display: inline-block; margin-bottom: 20px}
+.unlimited ul li h3{font-size: 15px}
+.whenever_need{padding: 15px 0 0}
+.whenever_need h3{font-size: 20px; text-align: center;}
+
+.bann_cont.why_beup h1 span{font-size: 40px}
+.unlimited h2{font-size: 20px}
+.unlimited{padding: 20px 0}
+.unlimited ul{width: 100%;}
+.unlimited ul li{width: 100%}
+.testi_img {
+    width: 290px;
+    height: 290px;
+    margin: 0 auto;
+
+}
+.testi_img img{width: 100%}
+.testimo p{font-size: 14px}
+.testimo p:before,.testimo p:after{font-size: 20px}
+.whenever_need p{font-size: 14px}
+.connect{padding: 20px 0}
+.connect h3{font-size: 20px}
+.connect p{font-size: 14px ; text-align: justify;}
+.connect ul,.kind_therapy ul{width: 100%;}
+.connect ul li{width: 100%}
+.kind_therapy ul li h3{font-size: 16px; line-height: 45px;}
+.kind_therapy ul li{padding: 10px}
+.kind_therapy ul li span{width: 50px ;height: 50px ; line-height: 50px}
+.kind_therapy .kind_title h3{font-size: 20px; text-align: center;}
+.kind_therapy .kind_title p{font-size: 14px ;text-align: justify;}
+.kind_therapy .kind_title{text-align: center;}
+.kind_therapy .kind_title a{float: none; display: inline-block; font-size: 14px}
+.responses{padding: 20px 0}
+.responses h3{font-size: 20px}
+.responses p{font-size: 14px}
+div#responses .carousel-control{width: 25px; height: 25px ; line-height: 25px; font-size: 14px}
+div#responses .carousel-control.left{left: 5px;}
+div#responses .carousel-control.right{right: 5px}
+div#responses .carousel-caption p{font-size: 14px}
+
+.terms-use{padding: 20px 0}
+.terms-use h2{font-size: 20px; margin-bottom: 15px}
+.terms-use p{font-size: 14px; text-align: center;}
+.terms-use ol li p, .terms-use ol li ul li{font-size: 14px}
+
+.terms-use{padding: 20px 0}
+.terms-use h2{font-size: 20px; margin-bottom: 15px}
+.terms-use p{font-size: 14px; text-align: center;}
+.terms-use ol li p, .terms-use ol li ul li{font-size: 14px}
+.experts-pro ul li{width: 47.7%}
+.experts-pro ul li:nth-child(2n){margin-right: 0}
+.terms-use.filt .filter{max-width: 300px; width: 100%; float: none; margin: 0 auto}
+.terms-use.filt .offline label, .terms-use.filt .offline span{width: 100%; font-size: 14px}
+.terms-use.filt .filter:after{top: 70px}
+
+}
+@media (min-width: 600px) and (max-width: 767px){
+.why_join h2{font-size: 20px}
+.why_join p{font-size: 14px}
+.why_join ul li{width: 47%; margin-bottom: 15px; margin-right: 15px}
+.why_join ul li:nth-child(2n){margin-right: 0}
+.recent_feature{text-align: center;}
+a#more_jobs{float: none; display: inline-block; margin-bottom: 20px}
+.recent_feature ul li{text-align: center; width: 48.5%; margin: 0 15px 15px 0}
+.recent_feature ul li:nth-child(2n){margin-right: 0}
+.recent_feature ul li h4{ width: 100%; line-height: normal; min-height: 50px}
+.recent_feature ul li h5{ width: 100%; line-height: normal;margin: 10px 0}
+.recent_feature ul li a{width: 40%; float: none; display: inline-block;}
+.recent_feature h2 {text-align: center;}
+.why_join ul li p{font-size: 14px}
+.dp-div, .time-dp{text-align: center;}
+.dp-div span{display: inline-block; float: none;}
+.dp-div h4{width: 100%}
+.feat_img p{text-align: center;}
+.unlimited ul li h3{font-size: 15px}
+.whenever_need{padding: 15px 0 0}
+.whenever_need h3{font-size: 20px; text-align: center;}
+
+.bann_cont.why_beup h1 span{font-size: 40px}
+.unlimited h2{font-size: 20px}
+.unlimited{padding: 20px 0}
+.unlimited ul{width: 100%; text-align: center;}
+.unlimited ul li{width: 48%; float: none; display: inline-block; margin-bottom: 15px}
+.unlimited ul li:nth-child(2n){margin-right: 0}
+.testi_img {
+    width: 290px;
+    height: 290px;
+    margin: 0 auto;
+
+}
+.testi_img img{width: 100%}
+.testimo p{font-size: 14px}
+.testimo p:before,.testimo p:after{font-size: 20px}
+.whenever_need p{font-size: 14px}
+.connect{padding: 20px 0}
+.connect h3{font-size: 20px}
+.connect p{font-size: 14px ; text-align: justify;}
+.connect ul,.kind_therapy ul{width: 100%;}
+.connect ul li{width: 47%; margin-bottom: 15px}
+.connect ul li:nth-child(2n){margin-right: 0}
+.kind_therapy ul li h3{font-size: 16px; line-height: 45px;}
+.kind_therapy ul li{padding: 10px ;width: 48%; float: none; display: inline-block ;margin: 0 15px 15px 0}
+.kind_therapy ul li:nth-child(2n){margin-right: 0}
+.kind_therapy ul li span{width: 50px ;height: 50px ; line-height: 50px}
+.kind_therapy .kind_title h3{font-size: 20px; text-align: center;}
+.kind_therapy .kind_title p{font-size: 14px ;text-align: justify;}
+.kind_therapy .kind_title{text-align: center;}
+.kind_therapy .kind_title a{float: none; display: inline-block; font-size: 14px}
+.responses{padding: 20px 0}
+.responses h3{font-size: 20px}
+.responses p{font-size: 14px}
+div#responses .carousel-control{width: 25px; height: 25px ; line-height: 25px; font-size: 14px}
+div#responses .carousel-control.left{left: 5px;}
+div#responses .carousel-control.right{right: 5px}
+div#responses .carousel-caption p{font-size: 14px}
+
+.terms-use{padding: 20px 0}
+.terms-use h2{font-size: 20px; margin-bottom: 15px}
+.terms-use p{font-size: 14px; text-align: center;}
+.terms-use ol li p, .terms-use ol li ul li{font-size: 14px}
+.experts-pro ul li{width: 48.2%}
+.experts-pro ul li:nth-child(2n){margin-right: 0}
+.terms-use.filt .filter{max-width: 300px; width: 100%; float: none; margin: 0 auto}
+.terms-use.filt .offline label, .terms-use.filt .offline span{width: 100%; font-size: 14px}
+.terms-use.filt .filter:after{top: 70px}
+
+
+}
+@media (min-width: 768px) and (max-width: 1023px){
+.recent_feature ul li a{width: 20%; margin-top: -20px; padding: 7px 10px; font-size: 14px}
+.recent_feature ul li h5,.recent_feature ul li h4{width: 80%}
+.dp-div h4 { float: right;width: 66%; font-size: 14px}
+.dp-div h4 small{font-size: 14px;}
+.dp-div, .time-dp{padding: 10px}
+.time-dp span{font-size: 12px}
+.feat_img p{padding: 10px; font-size: 12px}
+
+.bann_cont.why_beup h1 span{font-size: 40px}
+.unlimited h2{font-size: 20px}
+.unlimited{padding: 20px 0}
+.unlimited ul{width: 100%; text-align: center;}
+.testi_img {
+    width: 290px;
+    height: 290px;
+    margin: 0 auto;
+
+}
+.testi_img img{width: 100%}
+.testimo p{font-size: 14px}
+.testimo p:before,.testimo p:after{font-size: 20px}
+.whenever_need p{font-size: 14px}
+.connect{padding: 20px 0}
+.connect h3{font-size: 20px}
+.connect p{font-size: 14px ; text-align: justify;}
+.connect ul,.kind_therapy ul{width: 100%;}
+.connect ul li{width: 31%;}
+.kind_therapy ul li h3{font-size: 16px; line-height: 45px;}
+.unlimited ul li{width: 31.5%}
+.unlimited ul li:last-child{margin-right: 0}
+.unlimited ul li h3{width: 100%; float: left; text-align: center;}
+.kind_therapy ul li span{width: 50px ;height: 50px ; line-height: 50px}
+.kind_therapy .kind_title h3{font-size: 20px; text-align: center;}
+.kind_therapy .kind_title p{font-size: 14px ;text-align: justify;}
+.kind_therapy .kind_title{text-align: center;}
+.kind_therapy .kind_title a{float: none; display: inline-block; font-size: 14px}
+.responses{padding: 20px 0}
+.responses h3{font-size: 20px}
+.responses p{font-size: 14px}
+div#responses .carousel-control{width: 25px; height: 25px ; line-height: 25px; font-size: 14px}
+div#responses .carousel-control.left{left: 5px;}
+div#responses .carousel-control.right{right: 5px}
+div#responses .carousel-caption p{font-size: 14px}
+.experts-pro ul li{width: 48.5%}
+.experts-pro ul li:nth-child(2n){margin-right: 0}
+
+
+
+}
+@media (min-width: 1024px) and (max-width: 1199px){
+	.why_join ul li{width: 23.5%; margin-bottom: 15px; margin-right: 15px}
+.recent_feature ul li a{width: 20%; margin-top: -20px; padding: 7px 10px; }
+.recent_feature ul li h5,.recent_feature ul li h4{width: 80%}
+.dp-div h4 { float: right;width: 66%; font-size: 14px}
+.dp-div h4 small{font-size: 14px;}
+.dp-div, .time-dp{padding: 10px}
+.time-dp span{font-size: 12px}
+.feat_img p{padding: 10px; font-size: 12px}
+
+.bann_cont.why_beup h1 span{font-size: 40px}
+.unlimited h2{font-size: 20px}
+.unlimited{padding: 20px 0}
+.unlimited ul{width: 100%; text-align: center;}
+.testi_img {
+    width: 290px;
+    height: 290px;
+    margin: 0 auto;
+
+}
+.testi_img img{width: 100%}
+.testimo p{font-size: 14px}
+.testimo p:before,.testimo p:after{font-size: 20px}
+.whenever_need p{font-size: 14px}
+.connect{padding: 20px 0}
+.connect h3{font-size: 20px}
+.connect p{font-size: 14px ; text-align: justify;}
+.connect ul,.kind_therapy ul{width: 100%;}
+.connect ul li{width: 31%;}
+.kind_therapy ul li h3{font-size: 16px; line-height: 45px;}
+.unlimited ul li{width: 31.5%}
+.unlimited ul li:last-child{margin-right: 0}
+.unlimited ul li h3{width: 100%; float: left; text-align: center;}
+.kind_therapy ul li span{width: 50px ;height: 50px ; line-height: 50px}
+.kind_therapy .kind_title h3{font-size: 20px; text-align: center;}
+.kind_therapy .kind_title p{font-size: 14px ;text-align: justify;}
+.kind_therapy .kind_title{text-align: center;}
+.kind_therapy .kind_title a{float: none; display: inline-block; font-size: 14px}
+.responses{padding: 20px 0}
+.responses h3{font-size: 20px}
+.responses p{font-size: 14px}
+div#responses .carousel-control{width: 25px; height: 25px ; line-height: 25px; font-size: 14px}
+div#responses .carousel-control.left{left: 5px;}
+div#responses .carousel-control.right{right: 5px}
+div#responses .carousel-caption p{font-size: 14px}
+.experts-pro ul li{margin: 0 15px 75px 0}
+
+}
